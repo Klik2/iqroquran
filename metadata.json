@@ -1,0 +1,11 @@
+{
+  "name": "IQRO - Quran Digital",
+  "short_name": "IQRO",
+  "description": "Comprehensive digital Quran application with AI features.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "theme_color": "#059669",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
