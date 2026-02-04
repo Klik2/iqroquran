@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQRO - Quran Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Lateef&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-quran { font-family: 'Amiri', serif; line-height: 2.2; }
+        .font-hijaiyah { font-family: 'Lateef', cursive; }
+        
+        /* High Contrast Fixes per Instruction #3 */
+        .light { background-color: #f8fafc; color: #0f172a; }
+        .dark { background-color: #0f172a; color: #f1f5f9; }
+        
+        /* Arabic and Latin text outside boxes should be black in Light mode */
+        .light .font-quran:not(.in-dark-box), 
+        .light .latin-reading:not(.in-dark-box) { color: #000000 !important; }
+        
+        /* Inside dark boxes (buttons), text must be white for contrast */
+        .in-dark-box { color: #ffffff !important; }
+        
+        .latin-reading { font-weight: 700; font-style: italic; }
+        
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #059669; }
+
+        /* Reading Mode Overlay */
+        .reading-mode-active aside, 
+        .reading-mode-active footer,
+        .reading-mode-active .app-header { display: none !important; }
+        .reading-mode-active main { padding: 0 !important; width: 100% !important; max-width: 100% !important; }
+
+        /* Bismillah responsive scaling per Instruction #5 */
+        .bismillah-text {
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Child-friendly Animations */
+        @keyframes readingPulse {
+          0% { transform: scale(1); filter: drop-shadow(0 0 0px #10b981); }
+          50% { transform: scale(1.1); filter: drop-shadow(0 0 15px #10b981); color: #059669; }
+          100% { transform: scale(1); filter: drop-shadow(0 0 0px #10b981); }
+        }
+        .reading-highlight { animation: readingPulse 2s infinite ease-in-out; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.39.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "html2canvas": "https://esm.sh/html2canvas@1.4.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="transition-colors duration-300">
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
