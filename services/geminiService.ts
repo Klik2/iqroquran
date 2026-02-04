@@ -1,10 +1,9 @@
 
 import { GoogleGenAI, Modality, Blob } from '@google/genai';
 
-const API_KEY = process.env.API_KEY || '';
-
 export const getGeminiInstance = () => {
-  return new GoogleGenAI({ apiKey: API_KEY });
+  // Always use the direct environment variable as per instructions
+  return new GoogleGenAI({ apiKey: process.env.API_KEY });
 };
 
 export const speakText = async (text: string, voiceName: string = 'Kore') => {
