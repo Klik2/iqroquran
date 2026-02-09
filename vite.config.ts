@@ -7,11 +7,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineConfig(({ mode }) => {
-  // FIX: Replace process.cwd() with __dirname to resolve TypeScript error.
-  // In this context, __dirname refers to the project root, which is the correct path for loadEnv.
   const env = loadEnv(mode, __dirname, '');
   return {
-    // Memastikan path resolusi tepat untuk alias @
+    // Gunakan base relatif untuk memastikan path aset benar di Vercel/Netlify
+    base: './',
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
@@ -22,7 +21,6 @@ export default defineConfig(({ mode }) => {
       port: 3000,
       host: '0.0.0.0',
     },
-    // Perbaikan Error #31: Pastikan env terdefinisi sebagai string murni
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY || ''),
       'global': {},
@@ -30,6 +28,17 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: 'dist',
       sourcemap: false,
+      // Optimasi Chunking untuk file > 500kb
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              // Memisahkan vendor library (seperti React, Lucide) ke file tersendiri
+              return id.toString().split('node_modules/')[1].split('/')[0].toString();
+            }
+          },
+        },
+      },
     }
   };
 });
