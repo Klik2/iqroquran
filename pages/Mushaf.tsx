@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, Loader2, List, Layers } from 'lucide-react';
 import { Surah } from '../types';
-import { fetchSurahs } from '../services/quranService';
+import { fetchSurahs } from '../services/quranApi';
 import { useTranslation } from '../contexts/LanguageContext';
 
 const Mushaf: React.FC = () => {
