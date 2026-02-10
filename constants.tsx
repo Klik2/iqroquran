@@ -1,5 +1,204 @@
+
 import React from 'react';
-import { HijaiyahLetter, Doa, IqroLevelData } from './types';
+// Fix: Import types required for the new IQRO_DATA constant.
+import { HijaiyahLetter, Doa, IqroLevelData, TajwidRule, QuizQuestion } from './types';
+
+// Fix: Added structured data for Iqro levels, which was missing.
+const tajwidLevel4: TajwidRule[] = [
+    {
+        id: '4-1',
+        name: 'Izhar Halqi',
+        explanation: "Izhar (إِظْهَار) berarti 'jelas'. Jika Nun Sukun (نْ) atau Tanwin (ـًـــٍـــٌ) bertemu dengan salah satu dari enam huruf Halqi (tenggorokan: ء هـ ع ح غ خ), maka dibaca dengan jelas tanpa dengung.",
+        example: "مِنْهُ",
+        exampleLatin: "min-hu"
+    },
+    {
+        id: '4-2',
+        name: 'Idgham Bi Ghunnah',
+        explanation: "Meleburkan dengan dengung jika Nun Sukun atau Tanwin bertemu salah satu huruf: ي ن م و.",
+        example: "مَنْ يَقُولُ",
+        exampleLatin: "may yaqūlu"
+    },
+    {
+        id: '4-3',
+        name: 'Idgham Bila Ghunnah',
+        explanation: "Meleburkan tanpa dengung jika Nun Sukun atau Tanwin bertemu huruf: ل ر.",
+        example: "مِنْ لَدُنْهُ",
+        exampleLatin: "mil ladunhu"
+    }
+];
+
+const tajwidLevel6: TajwidRule[] = [
+    {
+        id: '6-1',
+        name: 'Iqlab',
+        explanation: "Iqlab (إِقْلَاب) berarti 'mengganti'. Jika Nun Sukun atau Tanwin bertemu dengan huruf Ba (ب), maka suara Nun/Tanwin diubah menjadi suara Mim (م) yang didengungkan.",
+        example: "مِنْۢ بَعْدِ",
+        exampleLatin: "mim ba‘di"
+    },
+    {
+        id: '6-2',
+        name: 'Ikhfa\' Haqiqi',
+        explanation: "Ikhfa' (إِخْفَاء) berarti 'samar'. Jika Nun Sukun atau Tanwin bertemu dengan 15 huruf sisa (ت ث ج د ذ ز س ش ص ض ط ظ ف ق ك), maka dibaca samar-samar antara Izhar dan Idgham, sambil didengungkan.",
+        example: "أَنْفُسَكُمْ",
+        exampleLatin: "anfusakum"
+    }
+];
+
+const quizLevel1: QuizQuestion[] = [
+    {
+        id: 'q1-1',
+        question: "Apa bacaan dari huruf ini?",
+        arabic: "ب",
+        options: ['ba', 'ta', 'tsa', 'ja'],
+        correctAnswer: 0
+    },
+    {
+        id: 'q1-2',
+        question: "Apa bacaan dari huruf ini?",
+        arabic: "ج",
+        options: ['ha', 'ja', 'kho', 'tsa'],
+        correctAnswer: 1
+    },
+     {
+        id: 'q1-3',
+        question: "Apa bacaan dari gabungan huruf ini?",
+        arabic: "دَرَ",
+        options: ['dara', 'rada', 'dada', 'rara'],
+        correctAnswer: 0
+    }
+];
+
+const quizLevel2: QuizQuestion[] = [
+    {
+        id: 'q2-1',
+        question: "Manakah bacaan yang benar untuk tulisan ini?",
+        arabic: "قَالَ",
+        options: ['qala', 'qāla', 'qola', 'qoola'],
+        correctAnswer: 1
+    },
+     {
+        id: 'q2-2',
+        question: "Mana tulisan Arab untuk 'baina'?",
+        options: ["بَانَ", "بَيْنَ", "بِنَا", "بَيْنَا"],
+        correctAnswer: 1
+    }
+];
+
+const quizLevel3: QuizQuestion[] = [
+     {
+        id: 'q3-1',
+        question: "Apa bacaan dari huruf ini?",
+        arabic: "بِ",
+        options: ['ba', 'bi', 'bu', 'bai'],
+        correctAnswer: 1
+    },
+     {
+        id: 'q3-2',
+        question: "Apa bacaan dari huruf ini?",
+        arabic: "تُ",
+        options: ['ta', 'ti', 'tu', 'tau'],
+        correctAnswer: 2
+    },
+];
+
+const quizLevel4: QuizQuestion[] = [
+    {
+        id: 'q4-1',
+        question: "Apa bacaan dari harakat tanwin ini?",
+        arabic: "بًا",
+        options: ['ba', 'bi', 'bun', 'ban'],
+        correctAnswer: 3
+    }
+];
+
+export const IQRO_DATA: IqroLevelData[] = [
+  {
+    id: 1,
+    title: "Iqro 1",
+    desc: "Mengenal huruf Hijaiyah tunggal dengan harakat Fathah (bunyi 'a').",
+    longDesc: "Fokus pada pengenalan bentuk huruf dan pelafalan dasarnya. Setiap huruf dibaca pendek dengan vokal 'a'.",
+    color: "emerald",
+    items: [
+      { arabic: "أ", latin: "a" }, { arabic: "ب", latin: "ba" }, { arabic: "ت", latin: "ta" }, { arabic: "ث", latin: "tsa" }, 
+      { arabic: "ج", latin: "ja" }, { arabic: "ح", latin: "ḥa" }, { arabic: "خ", latin: "kha" }, { arabic: "د", latin: "da" }, 
+      { arabic: "ذ", latin: "dza" }, { arabic: "ر", latin: "ra" }, { arabic: "ز", latin: "za" }, { arabic: "س", latin: "sa" }, 
+      { arabic: "ش", latin: "sya" }, { arabic: "ص", latin: "ṣa" }, { arabic: "ض", latin: "ḍa" }, { arabic: "ط", latin: "ṭa" }, 
+      { arabic: "ظ", latin: "ẓa" }, { arabic: "ع", latin: "'a" }, { arabic: "غ", latin: "gha" }, { arabic: "ف", latin: "fa" }, 
+      { arabic: "ق", latin: "qa" }, { arabic: "ك", latin: "ka" }, { arabic: "ل", latin: "la" }, { arabic: "م", latin: "ma" }, 
+      { arabic: "ن", latin: "na" }, { arabic: "هـ", latin: "ha" }, { arabic: "و", latin: "wa" }, { arabic: "ي", latin: "ya" },
+      { arabic: "بَتَ", latin: "bata" }, { arabic: "تَبَ", latin: "taba" }, { arabic: "جَحَ", latin: "jaḥa" }, { arabic: "حَجَ", latin: "ḥaja" },
+      { arabic: "دَرَ", latin: "dara" }, { arabic: "رَدَ", latin: "rada" }, { arabic: "سَشَ", latin: "sasya" }, { arabic: "شَسَ", latin: "syasa" },
+    ],
+    quiz: quizLevel1
+  },
+  {
+    id: 2,
+    title: "Iqro 2",
+    desc: "Mempelajari huruf yang disambung dan pengenalan bacaan panjang (Mad Thobi'i).",
+    longDesc: "Mulai menyambung huruf-huruf hijaiyah dan belajar membedakan bacaan pendek dan panjang (2 harakat).",
+    color: "blue",
+    items: [
+      { arabic: "بَتَ", latin: "bata" }, { arabic: "تَنَبَ", latin: "tanaba" }, { arabic: "بَيْنَ", latin: "baina" }, { arabic: "يَبنَ", latin: "yabna" },
+      { arabic: "جَعَلَ", latin: "ja'ala" }, { arabic: "حَسَنَ", latin: "ḥasana" }, { arabic: "خَتَمَ", latin: "khatama" }, { arabic: "نَزَلَ", latin: "nazala" },
+      { arabic: "بَا", latin: "bā" }, { arabic: "تَا", latin: "tā" }, { arabic: "نَا", latin: "nā" }, { arabic: "يَا", latin: "yā" },
+      { arabic: "قَالَ", latin: "qāla" }, { arabic: "كَانَ", latin: "kāna" }, { arabic: "مَا", latin: "mā" }, { arabic: "ذَا", latin: "dzā" }
+    ],
+    quiz: quizLevel2
+  },
+  {
+    id: 3,
+    title: "Iqro 3",
+    desc: "Mengenal harakat Kasrah (bunyi 'i') dan Dhammah (bunyi 'u').",
+    longDesc: "Mempelajari harakat Kasrah (bunyi 'i') dan Dhammah (bunyi 'u'), serta variasi bacaan panjang dan huruf sukun (mati).",
+    color: "amber",
+    items: [
+      { arabic: "بِ", latin: "bi" }, { arabic: "تِ", latin: "ti" }, { arabic: "ثِ", latin: "tsi" }, { arabic: "بُ", latin: "bu" }, { arabic: "تُ", latin: "tu" }, { arabic: "ثُ", latin: "tsu" },
+      { arabic: "كُتِبَ", latin: "kutiba" }, { arabic: "قُرِئَ", latin: "quri'a" }, { arabic: "سُئِلَ", latin: "su'ila" }, { arabic: "عُمِلَ", latin: "'umila" },
+      { arabic: "بِيْ", latin: "bī" }, { arabic: "تِيْ", latin: "tī" }, { arabic: "بُوْ", latin: "bū" }, { arabic: "تُوْ", latin: "tū" },
+      { arabic: "فِيْهِ", latin: "fīhi" }, { arabic: "يُوْحِيْ", latin: "yūḥī" }, { arabic: "قِيْلَ", latin: "qīla" }, { arabic: "يَقُوْلُ", latin: "yaqūlu" },
+    ],
+    quiz: quizLevel3
+  },
+  {
+    id: 4,
+    title: "Iqro 4",
+    desc: "Mempelajari harakat Tanwin, Nun Sukun/Tanwin, dan Qalqalah.",
+    longDesc: "Mempelajari harakat Tanwin (Fathatain 'an', Kasratain 'in', Dhammatain 'un'), hukum Nun Sukun/Tanwin (Izhar, Idgham), dan Qalqalah.",
+    color: "indigo",
+    items: [
+      { arabic: "بًا", latin: "ban" }, { arabic: "تًا", latin: "tan" }, { arabic: "بٍ", latin: "bin" }, { arabic: "تٍ", latin: "tin" }, { arabic: "بٌ", latin: "bun" }, { arabic: "تٌ", latin: "tun" },
+      { arabic: "كِتَابًا", latin: "kitāban" }, { arabic: "رَسُوْلٍ", latin: "rasūlin" }, { arabic: "عَذَابٌ", latin: "‘ażābun" },
+      { arabic: "مَنْ ءَامَنَ", latin: "man āmana" }, { arabic: "مِنْ وَلِيٍّ", latin: "miw waliyyin" }, { arabic: "يَدْخُلُوْنَ", latin: "yadkhulūna" }, { arabic: "اَحَدٌ", latin: "aḥad" },
+    ],
+    tajwid: tajwidLevel4,
+    quiz: quizLevel4
+  },
+  {
+    id: 5,
+    title: "Iqro 5",
+    desc: "Mengenal berbagai jenis Mad, bacaan Tasydid, dan cara berhenti (waqaf).",
+    longDesc: "Mengenal berbagai jenis Mad (bacaan panjang), hukum bacaan Tasydid, dan cara berhenti (waqaf) pada akhir kalimat.",
+    color: "purple",
+    items: [
+      { arabic: "اِنَّ", latin: "inna" }, { arabic: "رَبُّكَ", latin: "rabbuka" }, { arabic: "اِلَّا", latin: "illā" }, { arabic: "مِنَ الْجِنَّةِ وَالنَّاسِ", latin: "minal jinnati wan-nās" },
+      { arabic: "جَاۤءَ", latin: "jā'a" }, { arabic: "سُوْۤءَ", latin: "sū'a" }
+    ]
+  },
+  {
+    id: 6,
+    title: "Iqro 6",
+    desc: "Review tajwid, tanda waqaf, dan pengenalan huruf muqatha'ah.",
+    longDesc: "Review hukum-hukum tajwid yang telah dipelajari (Iqlab, Ikhfa), tanda-tanda waqaf, dan pengenalan huruf muqatha'ah di awal surah.",
+    color: "rose",
+    items: [
+      { arabic: "مِنْۢ بَعْدِ", latin: "mim ba‘di" }, { arabic: "اَنْفُسَكُمْ", latin: "anfusakum" }, { arabic: "مِنْ شَرِّ", latin: "min syarrin" }, { arabic: "رَجُلًا سَلَمًا", latin: "rajulan salaman" },
+      { arabic: "الۤمّۤ", latin: "Alif Lām Mīm" }, { arabic: "يٰسۤ", latin: "Yā Sīn" }, { arabic: "قۤ", latin: "Qāf" }, { arabic: "نۤ", latin: "Nūn" }
+    ],
+    tajwid: tajwidLevel6
+  },
+];
+
 
 export const HIJAIYAH_LETTERS: HijaiyahLetter[] = [
   { letter: 'ا', name: 'Alif', sound: 'Alif' },
@@ -30,155 +229,6 @@ export const HIJAIYAH_LETTERS: HijaiyahLetter[] = [
   { letter: 'و', name: 'Wau', sound: 'Wau' },
   { letter: 'ه', name: 'Ha', sound: 'Ha' },
   { letter: 'ي', name: 'Ya', sound: 'Ya' },
-];
-
-export const IQRO_DATA: IqroLevelData[] = [
-  {
-    id: 1,
-    title: 'Iqro 1',
-    desc: 'Pengenalan Huruf Hijaiyah Alif - Ya dengan Fathah (a).',
-    longDesc: 'Fokus pada pengenalan bentuk tunggal huruf hijaiyah dengan tanda baca fathah yang dibaca pendek dan tegas.',
-    color: 'emerald',
-    items: [
-      { arabic: 'اَ بَ', latin: 'A Ba' },
-      { arabic: 'بَ تَ', latin: 'Ba Ta' },
-      { arabic: 'تَ ثَ', latin: 'Ta Tsa' },
-      { arabic: 'جَ حَ خَ', latin: 'Ja Ha Kho' },
-      { arabic: 'دَ ذَ رَ', latin: 'Da Dza Ro' },
-      { arabic: 'زَ سَ شَ', latin: 'Za Sa Sya' },
-      { arabic: 'صَ ضَ طَ', latin: 'Sho Dho Tho' },
-      { arabic: 'ظَ عَ غَ', latin: 'Zho \'A Gho' },
-      { arabic: 'فَ قَ كَ', latin: 'Fa Qo Ka' },
-      { arabic: 'لَ مَ نَ', latin: 'La Ma Na' },
-      { arabic: 'وَ هَ يَ', latin: 'Wa Ha Ya' },
-    ],
-    tajwid: [
-      { id: '1-1', name: 'Fathah', explanation: 'Tanda baca garis di atas huruf, dibaca "A".', example: 'اَ بَ', exampleLatin: 'A Ba' },
-      { id: '1-2', name: 'Makhroj Alif', explanation: 'Bunyi keluar dari rongga mulut (Jauf).', example: 'اَ اَ اَ', exampleLatin: 'A A A' }
-    ],
-    quiz: [
-      { id: 'q1-1', question: 'Manakah huruf "Ba" dengan fathah?', arabic: 'بَ', options: ['اَ', 'بَ', 'تَ', 'ثَ'], correctAnswer: 1 },
-      { id: 'q1-2', question: 'Bagaimana cara membaca: جَ حَ خَ?', options: ['Ja Ha Kho', 'Ba Ta Tsa', 'Da Dza Ro'], correctAnswer: 0 }
-    ]
-  },
-  {
-    id: 2,
-    title: 'Iqro 2',
-    desc: 'Huruf Sambung & Bacaan Panjang (Mad Ashli).',
-    longDesc: 'Belajar bagaimana huruf berubah bentuk saat disambung dan mengenal bacaan panjang dua harakat (Mad Ashli).',
-    color: 'blue',
-    items: [
-      { arabic: 'بَـبَـبَ', latin: 'Ba-ba-ba' },
-      { arabic: 'تَـتَـتَ', latin: 'Ta-ta-ta' },
-      { arabic: 'بَا تَا ثَا', latin: 'Baa Taa Tsaa' },
-      { arabic: 'جَا حَا خَا', latin: 'Jaa Haa Khaa' },
-      { arabic: 'دَانَ كَانَ', latin: 'Daana Kaana' },
-      { arabic: 'سَامَا رَامَا', latin: 'Saamaa Raamaa' },
-      { arabic: 'تَـبَـارَكَ', latin: 'Tabaaroka' },
-      { arabic: 'فَـسَـقَـطَ', latin: 'Fasaqotho' },
-    ],
-    tajwid: [
-      { id: '2-1', name: 'Mad Ashli (Alif)', explanation: 'Huruf berharakat fathah bertemu Alif, dibaca panjang 2 harakat.', example: 'بَا تَا', exampleLatin: 'Baa Taa' },
-      { id: '2-2', name: 'Huruf Sambung', explanation: 'Bentuk huruf berubah ketika berada di awal, tengah, atau akhir kata.', example: 'بَـبَـبَ', exampleLatin: 'Ba-ba-ba' }
-    ],
-    quiz: [
-      { id: 'q2-1', question: 'Huruf yang dibaca panjang adalah...', arabic: 'بَا', options: ['بَ', 'بَا', 'بِ'], correctAnswer: 1 }
-    ]
-  },
-  {
-    id: 3,
-    title: 'Iqro 3',
-    desc: 'Kasroh (i), Dhommah (u), & Variasi Panjang.',
-    longDesc: 'Memperkenalkan harakat Kasroh (i) dan Dhommah (u) serta latihan membedakan bunyi pendek dan panjang.',
-    color: 'amber',
-    items: [
-      { arabic: 'اِيـبِي تِي', latin: 'Ii Bii Tii' },
-      { arabic: 'اُو بُو تُو', latin: 'Uu Buu Tuu' },
-      { arabic: 'عَلِيْمٌ', latin: '\'Aliimun' },
-      { arabic: 'قَدِيْرٌ', latin: 'Qodiirun' },
-      { arabic: 'يَـقُـوْلُ', latin: 'Yaquulu' },
-      { arabic: 'صِدِيْقِي', latin: 'Shidiiqii' },
-      { arabic: 'وَرَسُوْلُهُ', latin: 'Wa Rosuuluhu' },
-      { arabic: 'بِصِيْرًا', latin: 'Bashiiron' },
-    ],
-    tajwid: [
-      { id: '3-1', name: 'Kasroh', explanation: 'Garis di bawah huruf, dibaca "I". Jika bertemu Ya sukun, dibaca panjang.', example: 'بِي تِي', exampleLatin: 'Bii Tii' },
-      { id: '3-2', name: 'Dhommah', explanation: 'Tanda seperti angka 9 kecil di atas, dibaca "U". Jika bertemu Wau sukun, dibaca panjang.', example: 'بُو تُو', exampleLatin: 'Buu Tuu' }
-    ],
-    quiz: [
-      { id: 'q3-1', question: 'Tanda baca "u" disebut...', options: ['Fathah', 'Kasroh', 'Dhommah'], correctAnswer: 2 }
-    ]
-  },
-  {
-    id: 4,
-    title: 'Iqro 4',
-    desc: 'Tanwin & Bacaan Mati (Sukun).',
-    longDesc: 'Mempelajari bunyi Tanwin (An, In, Un) dan huruf mati (Sukun), termasuk dasar-dasar Qolqolah.',
-    color: 'indigo',
-    items: [
-      { arabic: 'اَنْ اِنْ اُنْ', latin: 'An In Un' },
-      { arabic: 'بَنْ bِنْ بُنْ', latin: 'Ban Bin Bun' },
-      { arabic: 'اَلْحَمْدُ', latin: 'Alhamdu' },
-      { arabic: 'اَبْ اَتْ اَثْ', latin: 'Ab At Ats' },
-      { arabic: 'مُسْلِمِيْنَ', latin: 'Muslimiina' },
-      { arabic: 'تَبَّتْ يَدَا', latin: 'Tabbat Yadaa' },
-      { arabic: 'وَلَمْ يَكُنْ', latin: 'Wa Lam Yakun' },
-      { arabic: 'فَلْيَعْبُدُوْا', latin: 'Falya\'buduu' },
-    ],
-    tajwid: [
-      { id: '4-1', name: 'Tanwin', explanation: 'Tanda harakat ganda, bunyinya diakhiri huruf "N".', example: 'اَنْ اِنْ اُنْ', exampleLatin: 'An In Un' },
-      { id: '4-2', name: 'Sukun', explanation: 'Tanda lingkaran kecil, menunjukkan huruf mati/tidak berharakat.', example: 'اَلْحَمْدُ', exampleLatin: 'Al-hamdu' }
-    ],
-    quiz: [
-      { id: 'q4-1', question: 'Bagaimana bunyi harakat Tanwin Dhommah?', options: ['An', 'In', 'Un'], correctAnswer: 2 }
-    ]
-  },
-  {
-    id: 5,
-    title: 'Iqro 5',
-    desc: 'Waqof, Tasydid, & Hukum Tajwid Dasar.',
-    longDesc: 'Latihan membaca huruf bertasydid, mengenal cara berhenti (waqof), dan hukum Mim/Nun mati.',
-    color: 'purple',
-    items: [
-      { arabic: 'اِنَّ لَمَّا', latin: 'Inna Lammaa' },
-      { arabic: 'رَبِّ الْعَالَمِيْنَ', latin: 'Robbil \'Aalamiin' },
-      { arabic: 'اِيَّاكَ نَعْبُdُ', latin: 'Iyyaaka Na\'budu' },
-      { arabic: 'وَالصَّيْفِ', latin: 'Wash-shoif' },
-      { arabic: 'قُلْ هُوَ اللّٰهُ', latin: 'Qul Huwallahu' },
-      { arabic: 'مِنْ شَرِّ', latin: 'Min Syarri' },
-      { arabic: 'بِمُؤْمِنِيْنَ', latin: 'Bimu-miniina' },
-    ],
-    tajwid: [
-      { id: '5-1', name: 'Tasydid', explanation: 'Tanda seperti huruf "w" kecil, huruf dibaca rangkap/ditekan.', example: 'رَبِّ اِنَّ', exampleLatin: 'Robbi Inna' },
-      { id: '5-2', name: 'Idgham Bighunnah', explanation: 'Nun mati/tanwin bertemu huruf tertentu, dibaca melebur dengan dengung.', example: 'مَنْ يَقُوْلُ', exampleLatin: 'May yaquulu' }
-    ],
-    quiz: [
-      { id: 'q5-1', question: 'Tanda baca yang membuat huruf dibaca rangkap adalah...', options: ['Sukun', 'Tasydid', 'Tanwin'], correctAnswer: 1 }
-    ]
-  },
-  {
-    id: 6,
-    title: 'Iqro 6',
-    desc: 'Iqlab, Ikhfa, & Fawatihush Suwar.',
-    longDesc: 'Tahap akhir sebelum Mushaf: Mempelajari Iqlab, Ikhfa, tanda waqof kompleks, dan huruf pembuka surat.',
-    color: 'rose',
-    items: [
-      { arabic: 'مِنْ بَعْدِ', latin: 'Mim ba\'di (Iqlab)' },
-      { arabic: 'اَنْفُسَكُمْ', latin: 'Anfusakum (Ikhfa)' },
-      { arabic: 'الم', latin: 'Alif Laam Miim' },
-      { arabic: 'كهيعص', latin: 'Kaaf Haa Yaa \'Aiin Shood' },
-      { arabic: 'طٰسٰمٰ', latin: 'Thoo Siin Miim' },
-      { arabic: 'بِغَيْبِهِ اَحَدًا', latin: 'Bighoibihii Ahadaa' },
-      { arabic: 'وَالسَّمَاۤءِ', latin: 'Was-samaaa-i' },
-    ],
-    tajwid: [
-      { id: '6-1', name: 'Ikhfa', explanation: 'Menyamarkan bunyi Nun mati/tanwin jika bertemu 15 huruf hijaiyah.', example: 'اَنْفُسَكُمْ', exampleLatin: 'Anfusakum' },
-      { id: '6-2', name: 'Iqlab', explanation: 'Mengganti bunyi Nun mati/tanwin menjadi "M" jika bertemu huruf Ba.', example: 'مِنْ بَعْدِ', exampleLatin: 'Mim ba\'di' }
-    ],
-    quiz: [
-      { id: 'q6-1', question: 'Jika Nun mati bertemu huruf Ba, hukumnya adalah...', options: ['Ikhfa', 'Iqlab', 'Izhar'], correctAnswer: 1 }
-    ]
-  }
 ];
 
 export const DOA_LIST: Doa[] = [
