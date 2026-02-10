@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Loader2, Bookmark, CheckCircle2 } from 'lucide-react';
 import { useIqroProgress } from '../../hooks/useIqroProgress';
@@ -64,8 +63,8 @@ export const HijaiyahCard: React.FC<HijaiyahCardProps> = ({
             >
                 {isLoading && <Loader2 className="absolute animate-spin h-8 w-8 text-emerald-dark dark:text-emerald-light" />}
                 <div className={`flex flex-col items-center justify-center transition-opacity ${isLoading ? 'opacity-20' : 'opacity-100'}`}>
-                  <span className={`font-arabic leading-none ${arabicTextSize}`} dir="rtl">{item.char}</span>
-                  <span className={`text-gray-500 dark:text-gray-400 ${latinTextSize}`}>{item.latin}</span>
+                  <span className={`font-arabic text-slate-900 dark:text-slate-100 leading-none ${arabicTextSize}`} dir="rtl">{item.char}</span>
+                  <span className={`text-slate-500 dark:text-slate-400 ${latinTextSize}`}>{item.latin}</span>
                 </div>
                 {isCompleted && !isPlaying && !isLoading && (
                     <CheckCircle2 aria-hidden="true" className="absolute top-1.5 right-1.5 h-4 w-4 text-gold-dark" />
