@@ -13,7 +13,6 @@ import Mushaf from './pages/Mushaf';
 import SurahDetail from './pages/SurahDetail';
 import JuzDetail from './pages/JuzDetail';
 import Iqro from './pages/Iqro';
-import IqroLevelPage from './pages/IqroLevelPage'; // New import
 import Rekam from './pages/Rekam';
 import Murotal from './pages/Murotal';
 import Tafsir from './pages/Tafsir';
@@ -98,7 +97,6 @@ const AppRoutes: React.FC = () => {
         <Route path="/surah/:number" element={<SurahDetail />} />
         <Route path="/juz/:number" element={<JuzDetail />} />
         <Route path="/iqro" element={<Iqro />} />
-        <Route path="/iqro/:levelNumber" element={<IqroLevelPage />} /> {/* Route updated */}
         <Route path="/murotal" element={<Murotal />} />
         <Route path="/tafsir" element={<Tafsir />} />
         <Route path="/doa" element={<Doa />} />
@@ -125,7 +123,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({ isLoggedIn, handleLogout }) => 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [isSettingsOpen, setSettingsOpen] = useState(false);
   const [showFamilyPrayerPopup, setShowFamilyPrayerPopup] = useState(false);
-  const location = useLocation();
 
   useEffect(() => {
     const hasSeenPopup = sessionStorage.getItem('hasSeenFamilyPrayerPopup');
@@ -137,12 +134,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ isLoggedIn, handleLogout }) => 
       return () => clearTimeout(timer);
     }
   }, []);
-  
-  // Apply full-screen layout for both Iqro menu and Iqro level details
-  const isIqroPage = location.pathname === '/iqro' || location.pathname.startsWith('/iqro/');
-  if (isIqroPage) {
-    return <Outlet />;
-  }
+
 
   return (
     <div className={`${theme} font-sans`} style={{ zoom: zoom }}>
