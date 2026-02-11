@@ -43,7 +43,7 @@ export const HijaiyahCard: React.FC<HijaiyahCardProps> = ({
     };
 
     const cardSizeClasses = isLarge
-        ? "p-4"
+        ? "p-4 min-h-[200px]"
         : "aspect-square";
     const arabicTextSize = isLarge ? "text-7xl sm:text-8xl" : "text-4xl";
     const latinTextSize = isLarge ? "text-md mt-2" : "text-xs mt-2";
@@ -78,7 +78,7 @@ export const HijaiyahCard: React.FC<HijaiyahCardProps> = ({
                 className="absolute bottom-1 right-1 p-1 text-gray-400 hover:text-gold-dark transition opacity-0 group-hover:opacity-100 focus:opacity-100"
                 aria-label={bookmarked ? 'Hapus bookmark' : 'Tambah bookmark'}
             >
-                <Bookmark size={16} fill={bookmarked ? 'text-gold-dark' : 'none'} />
+                <Bookmark size={16} fill={bookmarked ? 'currentColor' : 'none'} className={bookmarked ? 'text-gold-dark' : 'text-gray-400'}/>
             </button>
         </div>
     );
