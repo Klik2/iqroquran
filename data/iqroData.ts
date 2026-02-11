@@ -3,6 +3,7 @@ export const iqroData = [
         level: 1, 
         title: "Iqro 1", 
         description: "Mengenal huruf Hijaiyah tunggal dengan harakat Fathah (bunyi 'a'). Fokus pada pengenalan bentuk huruf dan pelafalan dasarnya.",
+        cover: "https://github.com/Klik2/sumber/raw/38e9b8adc0c075bae9f5608492b4150c8ca193de/Iqra_1.png",
         sections: [
             {
                 title: "Halaman 1: Pengenalan Huruf Tunggal",
@@ -27,7 +28,7 @@ export const iqroData = [
                     { char: 'اَ ثَ بَ', latin: 'A Tsa Ba' }, { char: 'تَ اَ ثَ', latin: 'Ta A Tsa' }, { char: 'جَ', latin: 'Ja' },
                     { char: 'اَ بَ تَ ثَ جَ', latin: 'A Ba Ta Tsa Ja' }, { char: 'حَ', latin: 'Ha' }, { char: 'جَ اَ حَ', latin: 'Ja A Ha' },
                     { char: 'خَ', latin: 'Kho' }, { char: 'حَ اَ خَ', latin: 'Ha A Kho' }, { char: 'اَ بَ تَ ثَ جَ حَ خَ', latin: 'A Ba Ta Tsa Ja Ha Kho' },
-                    { char: 'دَ', latin: 'Da' }, { char: 'خَ اَ دَ', latin: 'Kho A Da' }, { char: 'ذَ', latin: 'Dza' }, { char: 'دَ اَ ذَ', latin: 'Da A Dza' }
+                    { char: 'دَ', latin: 'Da' }, { char: 'خَ اَ dَ', latin: 'Kho A Da' }, { char: 'ذَ', latin: 'Dza' }, { char: 'دَ اَ ذَ', latin: 'Da A Dza' }
                 ],
                 guide: "💡 Tips Menggunakan Tabel Ini:\n* Jangan Mengeja: Langsung baca bunyinya: A - Ba.\n* Kecepatan Konsisten: Ulangi hingga lancar.\n* Perhatikan Kemiripan Bunyi: Ta (تَ) vs Tsa (ثَ), Ha (حَ) vs Kho (خَ)."
             },
@@ -376,6 +377,7 @@ export const iqroData = [
         level: 2, 
         title: "Iqro 2",
         description: "Mempelajari huruf yang disambung dan pengenalan bacaan panjang (Mad Thobi'i) yang dibaca sepanjang 2 harakat.",
+        cover: "https://github.com/Klik2/sumber/raw/38e9b8adc0c075bae9f5608492b4150c8ca193de/Iqra_2.png",
         sections: [ 
             { 
                 title: "Coming Soon", 
@@ -388,6 +390,7 @@ export const iqroData = [
         level: 3, 
         title: "Iqro 3", 
         description: "Mengenal harakat Kasrah (bunyi 'i') dan Dhammah (bunyi 'u'), serta variasi bacaan panjang dan huruf sukun (mati).",
+        cover: "https://github.com/Klik2/sumber/raw/38e9b8adc0c075bae9f5608492b4150c8ca193de/Iqra_3.png",
         sections: [ 
             { 
                 title: "Coming Soon", 
@@ -400,6 +403,7 @@ export const iqroData = [
         level: 4, 
         title: "Iqro 4", 
         description: "Mempelajari harakat Tanwin, hukum Nun Sukun/Tanwin, dan Qalqalah.",
+        cover: "https://github.com/Klik2/sumber/raw/38e9b8adc0c075bae9f5608492b4150c8ca193de/Iqra_4.png",
         sections: [ 
             { 
                 title: "Coming Soon", 
@@ -412,6 +416,7 @@ export const iqroData = [
         level: 5, 
         title: "Iqro 5", 
         description: "Mengenal berbagai jenis Mad, bacaan Tasydid, dan cara berhenti (waqaf).",
+        cover: "https://github.com/Klik2/sumber/raw/38e9b8adc0c075bae9f5608492b4150c8ca193de/Iqra_5.png",
         sections: [ 
             { 
                 title: "Coming Soon", 
@@ -423,7 +428,8 @@ export const iqroData = [
     { 
         level: 6, 
         title: "Iqro 6", 
-        description: "Review hukum-hukum tajwid, tanda-tanda waqaf, dan pengenalan huruf muqatha'ah.",
+        description: "Lanjutan hukum tajwid, waqaf, dan persiapan membaca Al-Quran.",
+        cover: "https://github.com/Klik2/sumber/raw/38e9b8adc0c075bae9f5608492b4150c8ca193de/Iqra_6.png",
         sections: [ 
             { 
                 title: "Coming Soon", 
