@@ -1,204 +1,5 @@
-
 import React from 'react';
-// Fix: Import types required for the new IQRO_DATA constant.
-import { HijaiyahLetter, Doa, IqroLevelData, TajwidRule, QuizQuestion } from './types';
-
-// Fix: Added structured data for Iqro levels, which was missing.
-const tajwidLevel4: TajwidRule[] = [
-    {
-        id: '4-1',
-        name: 'Izhar Halqi',
-        explanation: "Izhar (إِظْهَار) berarti 'jelas'. Jika Nun Sukun (نْ) atau Tanwin (ـًـــٍـــٌ) bertemu dengan salah satu dari enam huruf Halqi (tenggorokan: ء هـ ع ح غ خ), maka dibaca dengan jelas tanpa dengung.",
-        example: "مِنْهُ",
-        exampleLatin: "min-hu"
-    },
-    {
-        id: '4-2',
-        name: 'Idgham Bi Ghunnah',
-        explanation: "Meleburkan dengan dengung jika Nun Sukun atau Tanwin bertemu salah satu huruf: ي ن م و.",
-        example: "مَنْ يَقُولُ",
-        exampleLatin: "may yaqūlu"
-    },
-    {
-        id: '4-3',
-        name: 'Idgham Bila Ghunnah',
-        explanation: "Meleburkan tanpa dengung jika Nun Sukun atau Tanwin bertemu huruf: ل ر.",
-        example: "مِنْ لَدُنْهُ",
-        exampleLatin: "mil ladunhu"
-    }
-];
-
-const tajwidLevel6: TajwidRule[] = [
-    {
-        id: '6-1',
-        name: 'Iqlab',
-        explanation: "Iqlab (إِقْلَاب) berarti 'mengganti'. Jika Nun Sukun atau Tanwin bertemu dengan huruf Ba (ب), maka suara Nun/Tanwin diubah menjadi suara Mim (م) yang didengungkan.",
-        example: "مِنْۢ بَعْدِ",
-        exampleLatin: "mim ba‘di"
-    },
-    {
-        id: '6-2',
-        name: 'Ikhfa\' Haqiqi',
-        explanation: "Ikhfa' (إِخْفَاء) berarti 'samar'. Jika Nun Sukun atau Tanwin bertemu dengan 15 huruf sisa (ت ث ج د ذ ز س ش ص ض ط ظ ف ق ك), maka dibaca samar-samar antara Izhar dan Idgham, sambil didengungkan.",
-        example: "أَنْفُسَكُمْ",
-        exampleLatin: "anfusakum"
-    }
-];
-
-const quizLevel1: QuizQuestion[] = [
-    {
-        id: 'q1-1',
-        question: "Apa bacaan dari huruf ini?",
-        arabic: "ب",
-        options: ['ba', 'ta', 'tsa', 'ja'],
-        correctAnswer: 0
-    },
-    {
-        id: 'q1-2',
-        question: "Apa bacaan dari huruf ini?",
-        arabic: "ج",
-        options: ['ha', 'ja', 'kho', 'tsa'],
-        correctAnswer: 1
-    },
-     {
-        id: 'q1-3',
-        question: "Apa bacaan dari gabungan huruf ini?",
-        arabic: "دَرَ",
-        options: ['dara', 'rada', 'dada', 'rara'],
-        correctAnswer: 0
-    }
-];
-
-const quizLevel2: QuizQuestion[] = [
-    {
-        id: 'q2-1',
-        question: "Manakah bacaan yang benar untuk tulisan ini?",
-        arabic: "قَالَ",
-        options: ['qala', 'qāla', 'qola', 'qoola'],
-        correctAnswer: 1
-    },
-     {
-        id: 'q2-2',
-        question: "Mana tulisan Arab untuk 'baina'?",
-        options: ["بَانَ", "بَيْنَ", "بِنَا", "بَيْنَا"],
-        correctAnswer: 1
-    }
-];
-
-const quizLevel3: QuizQuestion[] = [
-     {
-        id: 'q3-1',
-        question: "Apa bacaan dari huruf ini?",
-        arabic: "بِ",
-        options: ['ba', 'bi', 'bu', 'bai'],
-        correctAnswer: 1
-    },
-     {
-        id: 'q3-2',
-        question: "Apa bacaan dari huruf ini?",
-        arabic: "تُ",
-        options: ['ta', 'ti', 'tu', 'tau'],
-        correctAnswer: 2
-    },
-];
-
-const quizLevel4: QuizQuestion[] = [
-    {
-        id: 'q4-1',
-        question: "Apa bacaan dari harakat tanwin ini?",
-        arabic: "بًا",
-        options: ['ba', 'bi', 'bun', 'ban'],
-        correctAnswer: 3
-    }
-];
-
-export const IQRO_DATA: IqroLevelData[] = [
-  {
-    id: 1,
-    title: "Iqro 1",
-    desc: "Mengenal huruf Hijaiyah tunggal dengan harakat Fathah (bunyi 'a').",
-    longDesc: "Fokus pada pengenalan bentuk huruf dan pelafalan dasarnya. Setiap huruf dibaca pendek dengan vokal 'a'.",
-    color: "emerald",
-    items: [
-      { arabic: "أ", latin: "a" }, { arabic: "ب", latin: "ba" }, { arabic: "ت", latin: "ta" }, { arabic: "ث", latin: "tsa" }, 
-      { arabic: "ج", latin: "ja" }, { arabic: "ح", latin: "ḥa" }, { arabic: "خ", latin: "kha" }, { arabic: "د", latin: "da" }, 
-      { arabic: "ذ", latin: "dza" }, { arabic: "ر", latin: "ra" }, { arabic: "ز", latin: "za" }, { arabic: "س", latin: "sa" }, 
-      { arabic: "ش", latin: "sya" }, { arabic: "ص", latin: "ṣa" }, { arabic: "ض", latin: "ḍa" }, { arabic: "ط", latin: "ṭa" }, 
-      { arabic: "ظ", latin: "ẓa" }, { arabic: "ع", latin: "'a" }, { arabic: "غ", latin: "gha" }, { arabic: "ف", latin: "fa" }, 
-      { arabic: "ق", latin: "qa" }, { arabic: "ك", latin: "ka" }, { arabic: "ل", latin: "la" }, { arabic: "م", latin: "ma" }, 
-      { arabic: "ن", latin: "na" }, { arabic: "هـ", latin: "ha" }, { arabic: "و", latin: "wa" }, { arabic: "ي", latin: "ya" },
-      { arabic: "بَتَ", latin: "bata" }, { arabic: "تَبَ", latin: "taba" }, { arabic: "جَحَ", latin: "jaḥa" }, { arabic: "حَجَ", latin: "ḥaja" },
-      { arabic: "دَرَ", latin: "dara" }, { arabic: "رَدَ", latin: "rada" }, { arabic: "سَشَ", latin: "sasya" }, { arabic: "شَسَ", latin: "syasa" },
-    ],
-    quiz: quizLevel1
-  },
-  {
-    id: 2,
-    title: "Iqro 2",
-    desc: "Mempelajari huruf yang disambung dan pengenalan bacaan panjang (Mad Thobi'i).",
-    longDesc: "Mulai menyambung huruf-huruf hijaiyah dan belajar membedakan bacaan pendek dan panjang (2 harakat).",
-    color: "blue",
-    items: [
-      { arabic: "بَتَ", latin: "bata" }, { arabic: "تَنَبَ", latin: "tanaba" }, { arabic: "بَيْنَ", latin: "baina" }, { arabic: "يَبنَ", latin: "yabna" },
-      { arabic: "جَعَلَ", latin: "ja'ala" }, { arabic: "حَسَنَ", latin: "ḥasana" }, { arabic: "خَتَمَ", latin: "khatama" }, { arabic: "نَزَلَ", latin: "nazala" },
-      { arabic: "بَا", latin: "bā" }, { arabic: "تَا", latin: "tā" }, { arabic: "نَا", latin: "nā" }, { arabic: "يَا", latin: "yā" },
-      { arabic: "قَالَ", latin: "qāla" }, { arabic: "كَانَ", latin: "kāna" }, { arabic: "مَا", latin: "mā" }, { arabic: "ذَا", latin: "dzā" }
-    ],
-    quiz: quizLevel2
-  },
-  {
-    id: 3,
-    title: "Iqro 3",
-    desc: "Mengenal harakat Kasrah (bunyi 'i') dan Dhammah (bunyi 'u').",
-    longDesc: "Mempelajari harakat Kasrah (bunyi 'i') dan Dhammah (bunyi 'u'), serta variasi bacaan panjang dan huruf sukun (mati).",
-    color: "amber",
-    items: [
-      { arabic: "بِ", latin: "bi" }, { arabic: "تِ", latin: "ti" }, { arabic: "ثِ", latin: "tsi" }, { arabic: "بُ", latin: "bu" }, { arabic: "تُ", latin: "tu" }, { arabic: "ثُ", latin: "tsu" },
-      { arabic: "كُتِبَ", latin: "kutiba" }, { arabic: "قُرِئَ", latin: "quri'a" }, { arabic: "سُئِلَ", latin: "su'ila" }, { arabic: "عُمِلَ", latin: "'umila" },
-      { arabic: "بِيْ", latin: "bī" }, { arabic: "تِيْ", latin: "tī" }, { arabic: "بُوْ", latin: "bū" }, { arabic: "تُوْ", latin: "tū" },
-      { arabic: "فِيْهِ", latin: "fīhi" }, { arabic: "يُوْحِيْ", latin: "yūḥī" }, { arabic: "قِيْلَ", latin: "qīla" }, { arabic: "يَقُوْلُ", latin: "yaqūlu" },
-    ],
-    quiz: quizLevel3
-  },
-  {
-    id: 4,
-    title: "Iqro 4",
-    desc: "Mempelajari harakat Tanwin, Nun Sukun/Tanwin, dan Qalqalah.",
-    longDesc: "Mempelajari harakat Tanwin (Fathatain 'an', Kasratain 'in', Dhammatain 'un'), hukum Nun Sukun/Tanwin (Izhar, Idgham), dan Qalqalah.",
-    color: "indigo",
-    items: [
-      { arabic: "بًا", latin: "ban" }, { arabic: "تًا", latin: "tan" }, { arabic: "بٍ", latin: "bin" }, { arabic: "تٍ", latin: "tin" }, { arabic: "بٌ", latin: "bun" }, { arabic: "تٌ", latin: "tun" },
-      { arabic: "كِتَابًا", latin: "kitāban" }, { arabic: "رَسُوْلٍ", latin: "rasūlin" }, { arabic: "عَذَابٌ", latin: "‘ażābun" },
-      { arabic: "مَنْ ءَامَنَ", latin: "man āmana" }, { arabic: "مِنْ وَلِيٍّ", latin: "miw waliyyin" }, { arabic: "يَدْخُلُوْنَ", latin: "yadkhulūna" }, { arabic: "اَحَدٌ", latin: "aḥad" },
-    ],
-    tajwid: tajwidLevel4,
-    quiz: quizLevel4
-  },
-  {
-    id: 5,
-    title: "Iqro 5",
-    desc: "Mengenal berbagai jenis Mad, bacaan Tasydid, dan cara berhenti (waqaf).",
-    longDesc: "Mengenal berbagai jenis Mad (bacaan panjang), hukum bacaan Tasydid, dan cara berhenti (waqaf) pada akhir kalimat.",
-    color: "purple",
-    items: [
-      { arabic: "اِنَّ", latin: "inna" }, { arabic: "رَبُّكَ", latin: "rabbuka" }, { arabic: "اِلَّا", latin: "illā" }, { arabic: "مِنَ الْجِنَّةِ وَالنَّاسِ", latin: "minal jinnati wan-nās" },
-      { arabic: "جَاۤءَ", latin: "jā'a" }, { arabic: "سُوْۤءَ", latin: "sū'a" }
-    ]
-  },
-  {
-    id: 6,
-    title: "Iqro 6",
-    desc: "Review tajwid, tanda waqaf, dan pengenalan huruf muqatha'ah.",
-    longDesc: "Review hukum-hukum tajwid yang telah dipelajari (Iqlab, Ikhfa), tanda-tanda waqaf, dan pengenalan huruf muqatha'ah di awal surah.",
-    color: "rose",
-    items: [
-      { arabic: "مِنْۢ بَعْدِ", latin: "mim ba‘di" }, { arabic: "اَنْفُسَكُمْ", latin: "anfusakum" }, { arabic: "مِنْ شَرِّ", latin: "min syarrin" }, { arabic: "رَجُلًا سَلَمًا", latin: "rajulan salaman" },
-      { arabic: "الۤمّۤ", latin: "Alif Lām Mīm" }, { arabic: "يٰسۤ", latin: "Yā Sīn" }, { arabic: "قۤ", latin: "Qāf" }, { arabic: "نۤ", latin: "Nūn" }
-    ],
-    tajwid: tajwidLevel6
-  },
-];
-
+import { HijaiyahLetter, Doa } from './types';
 
 export const HIJAIYAH_LETTERS: HijaiyahLetter[] = [
   { letter: 'ا', name: 'Alif', sound: 'Alif' },
@@ -232,24 +33,222 @@ export const HIJAIYAH_LETTERS: HijaiyahLetter[] = [
 ];
 
 export const DOA_LIST: Doa[] = [
-  {
-    id: '1',
-    title: 'Doa Memohon Ampunan dan Kasih Sayang',
-    arabic: 'رَبَّنَا ظَلَمْنَا أَنْفُسَنَا وَإِنْ لَمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ',
-    latin: 'Rabbana zhalamna anfusana wa-in lam taghfir lana watarhamna lanakunanna minal-khasirin.',
-    translation: 'Ya Tuhan kami, kami telah menzalimi diri sendiri. Jika Engkau tidak mengampuni kami dan memberi rahmat kepada kami, niscaya kami termasuk orang-orang yang rugi.',
-    source: 'QS. Al-Araf: 23',
-    ayahNumber: 977
-  },
-  {
-    id: '2',
-    title: 'Doa Kebaikan Dunia dan Akhirat',
-    arabic: 'رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ',
-    latin: 'Rabbana atina fid-dunya hasanatan wafil-akhirati hasanatan waqina adzaban-nar.',
-    translation: 'Ya Tuhan kami, berilah kami kebaikan di dunia dan kebaikan di akhirat, dan lindungilah kami dari azab neraka.',
-    source: 'QS. Al-Baqarah: 201',
-    ayahNumber: 208
-  }
+    {
+        id: '1',
+        title: 'Doa Diterima Amal Ibadah (Nabi Ibrahim & Ismail عَلَيْهِ ٱلسَّلَامُ)',
+        arabic: 'رَبَّنَا تَقَبَّلْ مِنَّا ۖ إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ',
+        latin: "Rabbana taqabbal minna innaka antas-sami'ul-'alim.",
+        translation: 'Ya Tuhan kami, terimalah (amal) dari kami. Sungguh, Engkaulah Yang Maha Mendengar, Maha Mengetahui.',
+        source: 'QS. Al-Baqarah: 127',
+        ayahNumber: 134
+    },
+    {
+        id: '2',
+        title: 'Doa Menjadi Muslim Taat & Mohon Taubat',
+        arabic: 'رَبَّنَا وَاجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَا أُمَّةً مُّسْلِمَةً لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَا ۖ إِنَّكَ أَنتَ التَّوَّابُ الرَّحِيمُ',
+        latin: "Rabbana waj'alna muslimaini laka wa min zurriyyatina ummatam muslimatal laka wa arina manasikana wa tub 'alaina innaka antat-tawwabur-rahim.",
+        translation: 'Ya Tuhan kami, jadikanlah kami orang yang berserah diri kepada-Mu, dan dari anak cucu kami (jadikanlah) umat yang berserah diri kepada-Mu dan tunjukkanlah kepada kami cara-cara ibadah kami, dan terimalah tobat kami. Sungguh, Engkaulah Yang Maha Penerima tobat, Maha Penyayang.',
+        source: 'QS. Al-Baqarah: 128',
+        ayahNumber: 135
+    },
+    {
+        id: '3',
+        title: 'Doa Kebaikan Dunia Akhirat (Sapu Jagat)',
+        arabic: 'رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ',
+        latin: "Rabbana atina fid-dunya hasanah wa fil-akhirati hasanah wa qina 'adzaban-nar.",
+        translation: 'Ya Tuhan kami, berilah kami kebaikan di dunia dan kebaikan di akhirat, dan lindungilah kami dari azab neraka.',
+        source: 'QS. Al-Baqarah: 201',
+        ayahNumber: 208
+    },
+    {
+        id: '4',
+        title: 'Doa Keteguhan & Kesabaran Menghadapi Lawan',
+        arabic: 'رَبَّنَا أَفْرِغْ عَلَيْنَا صَبْرًا وَثَبِّتْ أَقْدَامَنَا وَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ',
+        latin: "Rabbana afrigh 'alaina sabraw wa tsabbit aqdamana wansurna 'alal-qaumil-kafirin.",
+        translation: 'Ya Tuhan kami, limpahkanlah kesabaran kepada kami, kukuhkanlah langkah kami, dan menangkanlah kami atas kaum yang kafir.',
+        source: 'QS. Al-Baqarah: 250',
+        ayahNumber: 257
+    },
+    {
+        id: '5',
+        title: 'Doa Mohon Ampun atas Lupa & Khilaf',
+        arabic: 'رَبَّنَا لَا تُؤَاخِذْنَا إِن نَّسِينَا أَوْ أَخْطأْنَا',
+        latin: "Rabbana la tu'akhidzna in-nasina au akhta'na.",
+        translation: 'Ya Tuhan kami, janganlah Engkau hukum kami jika kami lupa atau kami melakukan kesalahan.',
+        source: 'QS. Al-Baqarah: 286',
+        ayahNumber: 293
+    },
+    {
+        id: '6',
+        title: 'Doa Mohon Keringanan Beban Hidup',
+        arabic: 'رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَا إِصْرًا كَمَا حَمَلْتَهُ عَلَى الَّذِينَ مِن قَبْلِنَا',
+        latin: "Rabbana wala tahmil 'alaina isran kama hamaltahu 'alal-ladzina min qablina.",
+        translation: 'Ya Tuhan kami, janganlah Engkau bebani kami dengan beban yang berat sebagaimana Engkau bebankan kepada orang-orang sebelum kami.',
+        source: 'QS. Al-Baqarah: 286',
+        ayahNumber: 293
+    },
+    {
+        id: '7',
+        title: 'Doa Mohon Kemampuan & Kemenangan',
+        arabic: 'رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِ ۖ وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا ۚ أَنتَ مَوْلَانَا فَانصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ',
+        latin: "Rabbana wala tuhammilna ma la taqata lana bih, wa'fu 'anna waghfir lana warhamna anta maulana fansurna 'alal-qaumil-kafirin.",
+        translation: 'Ya Tuhan kami, janganlah Engkau pikulkan kepada kami apa yang tidak sanggup kami memikulnya. Maafkanlah kami, ampunilah kami, dan rahmatilah kami. Engkaulah pelindung kami, maka tolonglah kami menghadapi orang-orang kafir.',
+        source: 'QS. Al-Baqarah: 286',
+        ayahNumber: 293
+    },
+    {
+        id: '8',
+        title: 'Doa Keteguhan Hati dalam Hidayah',
+        arabic: 'رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً ۚ إِنَّكَ أَنتَ الْوَهَّابُ',
+        latin: "Rabbana la tuzigh qulubana ba'da idz hadaitana wa hab lana mil ladunka rahmah innaka antal-wahhab.",
+        translation: 'Ya Tuhan kami, janganlah Engkau condongkan hati kami kepada kesesatan setelah Engkau berikan petunjuk kepada kami, dan karuniakanlah kepada kami rahmat dari sisi-Mu. Sungguh, Engkaulah Maha Pemberi.',
+        source: 'QS. Ali \'Imran: 8',
+        ayahNumber: 301
+    },
+    {
+        id: '9',
+        title: 'Doa Ampunan & Perlindungan Siksa Neraka',
+        arabic: 'رَبَّنَا إِنَّنَا آمَنَّا فَاغْفِرْ لَنَا ذُنُوبَنَا وَقِنَا عَذَابَ النَّارِ',
+        latin: "Rabbana innana amanna faghfir lana dzunubana wa qina 'adzaban-nar.",
+        translation: 'Ya Tuhan kami, sesungguhnya kami telah beriman, maka ampunilah segala dosa kami dan peliharalah kami dari siksa neraka.',
+        source: 'QS. Ali \'Imran: 16',
+        ayahNumber: 309
+    },
+    {
+        id: '10',
+        title: 'Doa Mohon Keturunan yang Baik (Nabi Zakariya عَلَيْهِ ٱلسَّلَامُ)',
+        arabic: 'رَبِّ هَبْ لِي مِن لَّدُنكَ ذُرِّيَّةً طَيِّبَةً ۖ إِنَّكَ سَمِيعُ الدُّعَاءِ',
+        latin: "Rabbi hab li mil ladunka dzurriyyatan tayyibatan innaka sami'ud-du'a.",
+        translation: 'Ya Tuhanku, berilah aku keturunan yang baik dari sisi-Mu, sesungguhnya Engkau Maha Pendengar doa.',
+        source: 'QS. Ali \'Imran: 38',
+        ayahNumber: 331
+    },
+    {
+        id: '11',
+        title: 'Doa Taubat dan Penyesalan (Nabi Adam عَلَيْهِ ٱلسَّلَامُ)',
+        arabic: 'رَبَّنَا ظَلَمْنَا أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ',
+        latin: "Rabbana zhalamna anfusana wa il lam taghfir lana wa tarhamna lanakunanna minal-khasirin.",
+        translation: 'Ya Tuhan kami, kami telah menzalimi diri kami sendiri. Jika Engkau tidak mengampuni kami dan memberi rahmat kepada kami, niscaya kami termasuk orang-orang yang rugi.',
+        source: 'QS. Al-A\'raf: 23',
+        ayahNumber: 977
+    },
+    {
+        id: '12',
+        title: 'Doa Husnul Khatimah',
+        arabic: 'رَبَّنَا فَاغْفِرْ لَنَا ذُنُوبَنَا وَكَفِّرْ عَنَّا سَيِّئَاتِنَا وَتَوَفَّنَا مَعَ الْأَبْرَارِ',
+        latin: "Rabbana faghfir lana dzunubana wa kaffir 'anna sayyi'atina wa tawaffana ma'al-abrar.",
+        translation: 'Ya Tuhan kami, ampunilah dosa-dosa kami dan hapuskanlah kesalahan-kesalahan kami, dan wafatkanlah kami beserta orang-orang yang berbakti.',
+        source: 'QS. Ali \'Imran: 193',
+        ayahNumber: 486
+    },
+    {
+        id: '13',
+        title: 'Doa Keamanan Negeri (Nabi Ibrahim عَلَيْهِ ٱلسَّلَامُ)',
+        arabic: 'رَبِّ اجْعَلْ هَٰذَا الْبَلَدَ آمِنًا وَاجْنُبْنِي وَبَنِيَّ أَن نَّعْبُدَ الْأَصْنَامَ',
+        latin: "Rabbij'al hadzal-balada aminaw-wajnubni wa baniyya an na'budal-ashnam.",
+        translation: 'Ya Tuhanku, jadikanlah negeri ini (Mekah), negeri yang aman, dan jauhkanlah aku beserta anak cucuku dari menyembah berhala-berhala.',
+        source: 'QS. Ibrahim: 35',
+        ayahNumber: 1740
+    },
+    {
+        id: '14',
+        title: 'Doa Dimudahkan Salat (Nabi Ibrahim عَلَيْهِ ٱلسَّلَامُ)',
+        arabic: 'رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِن ذُرِّيَّتِي ۚ رَبَّنَا وَتَقَبَّلْ دُعَاءِ',
+        latin: "Rabbij'alni muqimas-shalati wa min dzurriyyati rabbana wa taqabbal du'a.",
+        translation: 'Ya Tuhanku, jadikanlah aku dan anak cucuku orang yang tetap melaksanakan salat, ya Tuhan kami, perkenankanlah doaku.',
+        source: 'QS. Ibrahim: 40',
+        ayahNumber: 1745
+    },
+    {
+        id: '15',
+        title: 'Doa Ampunan Orang Tua & Mukmin (Nabi Ibrahim عَلَيْهِ ٱلسَّلَامُ)',
+        arabic: 'رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ',
+        latin: "Rabbanaghfir li wa li-walidayya wa lil-mu'minina yauma yaqumul-hisab.",
+        translation: 'Ya Tuhan kami, ampunilah aku dan kedua ibu bapakku dan semua orang yang beriman pada hari diadakan perhitungan (hari Kiamat).',
+        source: 'QS. Ibrahim: 41',
+        ayahNumber: 1746
+    },
+    {
+        id: '16',
+        title: 'Doa Kelancaran Bicara & Kelapangan Dada (Nabi Musa عَلَيْهِ ٱلسَّلَامُ)',
+        arabic: 'رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي وَاحْلُلْ عُقْدَةً مِّن لِّسَانِي يَفْقَهُوا قَوْلِي',
+        latin: "Rabbisy-syrah li shadri wa yassir li amri wahlul 'uqdatam mil-lisani yafqahu qauli.",
+        translation: 'Ya Tuhanku, lapangkanlah dadaku, dan mudahkanlah untukku urusanku, dan lepaskanlah kekakuan dari lidahku, agar mereka mengerti perkataanku.',
+        source: 'QS. Thaha: 25-28',
+        ayahNumber: 2373
+    },
+    {
+        id: '17',
+        title: 'Doa Tambahan Ilmu (Nabi Muhammad ﷺ)',
+        arabic: 'رَّبِّ زِدْنِي عِلْمًا',
+        latin: "Rabbi zidni 'ilma.",
+        translation: 'Ya Tuhanku, tambahkanlah ilmu kepadaku.',
+        source: 'QS. Thaha: 114',
+        ayahNumber: 2462
+    },
+    {
+        id: '18',
+        title: 'Doa Kesembuhan (Nabi Ayub عَلَيْهِ ٱلسَّلَامُ)',
+        arabic: 'أَنِّي مَسَّنِيَ الضُّرُّ وَأَنتَ أَرْحَمُ الرَّاحِمِينَ',
+        latin: "Anni massaniyad-durru wa anta arhamur-rahimin.",
+        translation: '(Ya Tuhanku), sesungguhnya aku telah ditimpa penyakit dan Engkau adalah Tuhan Yang Maha Penyayang di antara semua penyayang.',
+        source: 'QS. Al-Anbiya: 83',
+        ayahNumber: 2566
+    },
+    {
+        id: '19',
+        title: 'Doa Terhindar dari Kesulitan (Nabi Yunus عَلَيْهِ ٱلسَّلَامُ)',
+        arabic: 'لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ',
+        latin: "La ilaha illa anta subhanaka inni kuntu minazh-zhalimin.",
+        translation: 'Tidak ada tuhan selain Engkau, Mahasuci Engkau. Sungguh, aku termasuk orang-orang yang zalim.',
+        source: 'QS. Al-Anbiya: 87',
+        ayahNumber: 2570
+    },
+    {
+        id: '20',
+        title: 'Doa Penyejuk Mata & Kepemimpinan Taqwa',
+        arabic: 'رَبَّنَا هَبْ لَنَا مِنْ أَزْواجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا',
+        latin: "Rabbana hab lana min azwajina wa dzurriyyatina qurrata a'yuniv-waj'alna lil-muttaqina imama.",
+        translation: 'Ya Tuhan kami, anugerahkanlah kepada kami pasangan kami dan keturunan kami sebagai penyenang hati (kami), dan jadikanlah kami pemimpin bagi orang-orang yang bertakwa.',
+        source: 'QS. Al-Furqan: 74',
+        ayahNumber: 2929
+    },
+    {
+        id: '21',
+        title: 'Doa Syukur & Amal Saleh (Nabi Sulaiman عَلَيْهِ ٱلسَّلَامُ)',
+        arabic: 'رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ وَعَلَىٰ وَالِدَيَّ وَأَنْ أَعْمَلَ صَالِحًا تَرْضَاهُ وَأَدْخِلْنِي بِرَحْمَتِكَ فِي عِبَادِكَ الصَّالِحِينَ',
+        latin: "Rabbi auzi'ni an asykura ni'matakal-lati an'amta 'alayya wa 'ala walidayya wa an a'mala shalihan tardhahu wa adkhilni birahmatika fi 'ibadikas-shalihin.",
+        translation: 'Ya Tuhanku, anugerahkanlah aku ilham untuk tetap mensyukuri nikmat-Mu yang telah Engkau anugerahkan kepadaku dan kepada kedua orang tuaku dan agar aku mengerjakan kebajikan yang Engkau ridai; dan masukkanlah aku dengan rahmat-Mu ke dalam golongan hamba-hamba-Mu yang saleh.',
+        source: 'QS. An-Naml: 19',
+        ayahNumber: 3178
+    },
+    {
+        id: '22',
+        title: 'Doa Ampunan bagi Diri & Saudara Seiman',
+        arabic: 'رَبَّنَا اغْفِرْ لَنَا وَلِإِخْوَانِنَا الَّذِينَ سَبَقُونَا بِالْإِيمَانِ وَلَا تَجْعَلْ فِي قُلُوبِنَا غِلًّا لِّلَّذِينَ آمَنُوا رَبَّنَا إِنَّكَ رَءُوفٌ رَّحِيمٌ',
+        latin: "Rabbanaghfir lana wa li-ikhwaninal-ladzina sabaquna bil-imani wala taj'al fi qulubina ghillal-lilladzina amanu rabbana innaka ra'ufur-rahim.",
+        translation: 'Ya Tuhan kami, ampunilah kami dan saudara-saudara kami yang telah beriman lebih dahulu dari kami, dan janganlah Engkau tanamkan kedengkian dalam hati kami terhadap orang-orang yang beriman. Ya Tuhan kami, Sungguh, Engkau Maha Penyantun, Maha Penyayang.',
+        source: 'QS. Al-Hasyr: 10',
+        ayahNumber: 5114
+    },
+    {
+        id: '23',
+        title: 'Doa Tawakal kepada Allah ﷻ',
+        arabic: 'رَّبَّنَا عَلَيْكَ تَوَكَّلْنَا وَإِلَيْكَ أَنَبْنَا وَإِلَيْكَ الْمَصِيرُ',
+        latin: "Rabbana 'alaika tawakkalna wa ilaika anabna wa ilaikal-mashir.",
+        translation: 'Ya Tuhan kami, hanya kepada Engkaulah kami bertawakal dan hanya kepada Engkaulah kami bertobat dan hanya kepada Engkaulah kami kembali.',
+        source: 'QS. Al-Mumtahanah: 4',
+        ayahNumber: 5154
+    },
+    {
+        id: '24',
+        title: 'Doa Kesempurnaan Cahaya & Ampunan',
+        arabic: 'رَبَّنَا أَتْمِمْ لَنَا نُورَنَا وَاغْفِرْ لَنَا ۖ إِنَّكَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ',
+        latin: "Rabbana atmim lana nurana waghfir lana innaka 'ala kulli syai'in qadir.",
+        translation: 'Ya Tuhan kami, sempurnakanlah untuk kami cahaya kami dan ampunilah kami; Sungguh, Engkau Mahakuasa atas segala sesuatu.',
+        source: 'QS. At-Tahrim: 8',
+        ayahNumber: 5249
+    }
 ];
 
 export const QARIS = [

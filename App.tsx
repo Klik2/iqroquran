@@ -13,7 +13,7 @@ import Mushaf from './pages/Mushaf';
 import SurahDetail from './pages/SurahDetail';
 import JuzDetail from './pages/JuzDetail';
 import Iqro from './pages/Iqro';
-import IqroLevelPage from './pages/IqroLevelPage'; // New import
+import IqroDetail from './pages/IqroDetail';
 import Rekam from './pages/Rekam';
 import Murotal from './pages/Murotal';
 import Tafsir from './pages/Tafsir';
@@ -98,7 +98,7 @@ const AppRoutes: React.FC = () => {
         <Route path="/surah/:number" element={<SurahDetail />} />
         <Route path="/juz/:number" element={<JuzDetail />} />
         <Route path="/iqro" element={<Iqro />} />
-        <Route path="/iqro/:levelNumber" element={<IqroLevelPage />} /> {/* Route updated */}
+        <Route path="/iqro/:levelNumber" element={<IqroDetail />} />
         <Route path="/murotal" element={<Murotal />} />
         <Route path="/tafsir" element={<Tafsir />} />
         <Route path="/doa" element={<Doa />} />
@@ -138,12 +138,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({ isLoggedIn, handleLogout }) => 
     }
   }, []);
   
-  // Apply full-screen layout for both Iqro menu and Iqro level details
-  const isIqroPage = location.pathname === '/iqro' || location.pathname.startsWith('/iqro/');
-  if (isIqroPage) {
-    return <Outlet />;
-  }
-
   return (
     <div className={`${theme} font-sans`} style={{ zoom: zoom }}>
       <div className="bg-soft-white dark:bg-dark-blue text-gray-800 dark:text-gray-200 min-h-screen">
