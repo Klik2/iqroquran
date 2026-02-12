@@ -1,6 +1,7 @@
 
+
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
-import { fetchTranslationEditions } from '../services/quranApi';
+import { fetchTranslationEditions } from '../services/quranService'; // FIX: Corrected import path
 
 interface PlayingAyah {
   surahNumber: number;
