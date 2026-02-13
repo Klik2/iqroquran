@@ -21,7 +21,7 @@
             --primary-gold: #b45309;
             --bg-light: #fdfdfb;
             --bg-dark: #0f172a;
-            --text-box-light: #1e293b; /* Warna font kontras untuk box abu-abu */
+            --text-box-light: #1e293b;
         }
 
         body { 
@@ -32,17 +32,15 @@
 
         body.dark { background-color: var(--bg-dark); color: #f8fafc; }
 
-        /* Background Pattern */
         .islamic-pattern {
             background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
             opacity: 0.05;
             position: fixed; inset: 0; pointer-events: none; z-index: 0;
         }
 
-        /* Kontras Tinggi untuk Box Abu-abu pada Mode Cerah */
         .tech-box {
             background-color: #f1f5f9;
-            color: var(--text-box-light); /* Teks dibuat sangat gelap agar kontras */
+            color: var(--text-box-light);
         }
         .dark .tech-box {
             background-color: rgba(30, 41, 59, 0.5);
@@ -180,22 +178,22 @@
         </section>
 
         <section class="tech-box rounded-[40px] p-8 md:p-12 grid md:grid-cols-2 gap-10 items-center shadow-lg">
-    <div data-aos="fade-right">
-        <h3 data-lang="tech-h" class="text-xl font-bold mb-6">Teknologi & Aksesibilitas</h3>
-        <ul class="space-y-3 text-sm font-semibold">
-            <li><i class="fa-solid fa-circle-check text-green-600 mr-2"></i> <span data-lang="t1">Support All Device (PWA - No Install)</span></li>
-            <li><i class="fa-solid fa-circle-check text-green-600 mr-2"></i> <span data-lang="t2">Mode Baca Fokus & Mode Gelap/Cerah</span></li>
-            <li><i class="fa-solid fa-circle-check text-green-600 mr-2"></i> <span data-lang="t3">Fitur Rekam Bacaan Suara Sendiri</span></li>
-            <li><i class="fa-solid fa-circle-check text-green-600 mr-2"></i> <span data-lang="t4">Bisa digunakan Offline (Fitur Tertentu)</span></li>
-            <li><i class="fa-solid fa-circle-check text-green-600 mr-2"></i> <span data-lang="t5">Perbesar teks Arab & Latin</span></li>
-        </ul>
-    </div>
-    <div data-aos="fade-left" class="bg-white/50 dark:bg-slate-900/40 p-6 rounded-3xl border-l-4 border-amber-600">
-        <p data-lang="note-text" class="text-sm italic leading-relaxed font-bold">
-            "Aplikasi ini adalah sarana pembelajaran online. Pendekatan terbaik tetaplah Tallaqi (berhadapan langsung dengan guru)."
-        </p>
-    </div>
-</section>
+            <div data-aos="fade-right">
+                <h3 data-lang="tech-h" class="text-xl font-bold mb-6">Teknologi & Aksesibilitas</h3>
+                <ul class="space-y-3 text-sm font-semibold">
+                    <li><i class="fa-solid fa-circle-check text-green-600 mr-2"></i> <span data-lang="t1">Dukungan Semua Perangkat (PWA)</span></li>
+                    <li><i class="fa-solid fa-circle-check text-green-600 mr-2"></i> <span data-lang="t2">Mode Baca Fokus & Terang/Gelap</span></li>
+                    <li><i class="fa-solid fa-circle-check text-green-600 mr-2"></i> <span data-lang="t3">Fitur Rekam Bacaan Sendiri</span></li>
+                    <li><i class="fa-solid fa-circle-check text-green-600 mr-2"></i> <span data-lang="t4">Gunakan Secara Offline</span></li>
+                    <li><i class="fa-solid fa-circle-check text-green-600 mr-2"></i> <span data-lang="t5">Perbesar Teks Arab & Latin</span></li>
+                </ul>
+            </div>
+            <div data-aos="fade-left" class="bg-white/50 dark:bg-slate-900/40 p-6 rounded-3xl border-l-4 border-amber-600">
+                <p data-lang="note-text" class="text-sm italic leading-relaxed font-bold">
+                    "Aplikasi ini adalah sarana pembelajaran. Pendekatan terbaik tetaplah Tallaqi (berhadapan langsung dengan guru)."
+                </p>
+            </div>
+        </section>
 
         <section data-aos="fade-up" class="text-center py-10">
             <p class="arabic-text text-green-700 dark:text-green-400 mb-6">خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ</p>
@@ -214,268 +212,272 @@
         AOS.init({ duration: 800, once: true });
 
         const translations = {
-    id: {
-        "hero-badge": "Pintu Gerbang Keindahan Al-Qur'an",
-        "hero-title-1": "Mulai Belajar Al-Qur'an",
-        "hero-title-2": "Hanya Dalam Genggaman",
-        "hero-desc": "Langkah awal menjadi Ahlul Qur’an dengan metode praktis, mudah dipahami, dan cocok untuk semua usia.",
-        "btn-start": "Mulai Belajar",
-        "btn-materi": "Lihat Fitur",
-        "doa-text": '"Ya Allah, tambahkanlah kepadaku ilmu pengetahuan (QS. Thaha: 114)."',
-        "fitur-header": "Fitur Ekosistem Digital",
-        "f1-t": "Metode Iqro 1-6",
-        "f1-d": "Belajar Hijaiyah dari dasar sumber buku K.H. As'ad Humam dengan Voice Over TTS.",
-        "f2-t": "Mushaf & Tafsir",
-        "f2-d": "Tampilan per Surah/Juz, bacaan latin, terjemahan dunia, dan audio per ayat.",
-        "f3-t": "Murottal 30 Juz",
-        "f3-d": "Dengarkan lantunan suci dari Qori ternama dunia untuk menemani tadabbur.",
-        "tech-h": "Teknologi & Aksesibilitas",
-        "t1": "Support All Device (PWA - No Install)",
-        "t2": "Mode Baca Fokus & Mode Gelap/Cerah",
-        "t3": "Fitur Rekam Bacaan Suara Sendiri",
-        "t4": "Bisa digunakan Offline (Fitur Tertentu)",
-        "t5": "Perbesar teks Arab & Latin",
-        "note-text": '"Aplikasi ini adalah sarana pembelajaran online. Pendekatan terbaik tetaplah Tallaqi (berhadapan langsung dengan guru)."',
-        "hadist-text": '"Sebaik-baik kalian adalah yang belajar Al-Qur’an dan mengajarkannya."',
-        "btn-final": "RAIH KEUTAMAAN SEKARANG"
-    },
-    en: {
-        "hero-badge": "Gateway to the Beauty of the Quran",
-        "hero-title-1": "Start Learning Quran",
-        "hero-title-2": "In Your Hand",
-        "hero-desc": "First step to becoming Ahlul Quran with practical, easy-to-understand methods for all ages.",
-        "btn-start": "Start Learning",
-        "btn-materi": "View Features",
-        "doa-text": '"O Allah, increase me in knowledge (QS. Thaha: 114)."',
-        "fitur-header": "Digital Ecosystem Features",
-        "f1-t": "Iqro 1-6 Method",
-        "f1-d": "Learn Hijaiyah from basic K.H. As'ad Humam book with Voice Over TTS.",
-        "f2-t": "Mushaf & Tafsir",
-        "f2-d": "Per Surah/Juz view, Latin reading, worldwide translations, and audio per verse.",
-        "f3-t": "Murottal 30 Juz",
-        "f3-d": "Listen to holy recitations from world-renowned Qoris.",
-        "tech-h": "Tech & Accessibility",
-        "t1": "Support All Device (PWA - No Install)",
-        "t2": "Focus Reading Mode & Dark/Light Mode",
-        "t3": "Self-Voice Recording Feature",
-        "t4": "Can be used Offline (Certain Features)",
-        "t5": "Enlarge Arabic & Latin text",
-        "note-text": '"This app is an online learning tool. The best approach remains Tallaqi (face-to-face with a teacher)."',
-        "hadist-text": '"The best of you are those who learn the Quran and teach it."',
-        "btn-final": "GET VIRTUE NOW"
-    },
-    fr: {
-        "hero-badge": "Porte d'entrée vers la beauté du Coran",
-        "hero-title-1": "Commencez à apprendre le Coran",
-        "hero-title-2": "Dans votre main",
-        "hero-desc": "La première étape pour devenir Ahlul Quran avec une méthode pratique et facile pour tous les âges.",
-        "btn-start": "Commencer", "btn-materi": "Caractéristiques",
-        "doa-text": '"Ô Allah, augmente mes connaissances (QS. Thaha: 114)."',
-        "fitur-header": "Fonctionnalités Numériques",
-        "f1-t": "Méthode Iqro 1-6", "f1-d": "Apprenez le Hijaiyah avec la voix off TTS interactive.",
-        "f2-t": "Mushaf & Tafsir", "f2-d": "Vue par Sourate/Juz avec traductions mondiales.",
-        "f3-t": "Murottal 30 Juz", "f3-d": "Récitations de Qoris de renommée mondiale.",
-        "tech-h": "Technologie & Accessibilité",
-        "t1": "Tous appareils (PWA - Sans installation)",
-        "t2": "Mode lecture focus & Sombre/Clair",
-        "t3": "Enregistrement vocal personnel",
-        "t4": "Utilisable hors ligne (certaines fonctions)",
-        "t5": "Agrandir le texte arabe et latin",
-        "note-text": '"Cette application est un outil en ligne. L\'apprentissage en face à face reste la meilleure approche."',
-        "hadist-text": '"Le meilleur d\'entre vous est celui qui apprend le Coran et l\'enseigne."',
-        "btn-final": "OBTENIR LA VERTU MAINTENANT"
-    },
-    es: {
-        "hero-badge": "Puerta a la belleza del Corán",
-        "hero-title-1": "Empieza a aprender el Corán",
-        "hero-title-2": "En tu mano",
-        "hero-desc": "El primer paso para ser Ahlul Quran con un método práctico y fácil para todas las edades.",
-        "btn-start": "Empezar", "btn-materi": "Características",
-        "doa-text": '"Oh Allah, aumenta mis conocimientos (QS. Thaha: 114)."',
-        "fitur-header": "Características Digitales",
-        "f1-t": "Método Iqro 1-6", "f1-d": "Aprende Hijaiyah con voz en off TTS interactiva.",
-        "f2-t": "Mushaf y Tafsir", "f2-d": "Vista por Sura/Juz con traducciones mundiales.",
-        "f3-t": "Murottal 30 Juz", "f3-d": "Recitaciones de Qoris de fama mundial.",
-        "tech-h": "Tecnología y Accesibilidad",
-        "t1": "Todo dispositivo (PWA - Sin instalar)",
-        "t2": "Modo lectura enfoque y Oscuro/Claro",
-        "t3": "Grabación de voz propia",
-        "t4": "Uso offline (ciertas funciones)",
-        "t5": "Agrandar texto árabe y latín",
-        "note-text": '"Esta aplicación es una herramienta en línea. El aprendizaje presencial sigue siendo el mejor enfoque."',
-        "hadist-text": '"El mejor de vosotros es el que aprende el Corán y lo enseña."',
-        "btn-final": "OBTÉN LA VIRTUD AHORA"
-    },
-    pt: {
-        "hero-badge": "Portal para a beleza do Alcorão",
-        "hero-title-1": "Comece a aprender o Alcorão",
-        "hero-title-2": "Na sua mão",
-        "hero-desc": "O primeiro passo para se tornar Ahlul Quran com um método prático e fácil para todas as idades.",
-        "btn-start": "Começar", "btn-materi": "Recursos",
-        "doa-text": '"Ó Allah, aumenta o meu conhecimento (QS. Thaha: 114)."',
-        "fitur-header": "Recursos Digitais",
-        "f1-t": "Método Iqro 1-6", "f1-d": "Aprenda Hijaiyah com voz interativa TTS.",
-        "f2-t": "Mushaf e Tafsir", "f2-d": "Vista por Surata/Juz com traduções mundiais.",
-        "f3-t": "Murottal 30 Juz", "f3-d": "Recitações de Qoris de renome mundial.",
-        "tech-h": "Tecnologia e Acessibilidade",
-        "t1": "Todos dispositivos (PWA - Sem instalar)",
-        "t2": "Modo leitura foco & Escuro/Claro",
-        "t3": "Gravação de voz própria",
-        "t4": "Uso offline (certas funções)",
-        "t5": "Aumentar texto árabe e latim",
-        "note-text": '"Este aplicativo é uma ferramenta online. O aprendizado presencial continua sendo a melhor abordagem."',
-        "hadist-text": '"O melhor de vós é aquele que aprende o Alcorão e o ensina."',
-        "btn-final": "OBTENHA A VIRTUDE AGORA"
-    },
-    zh: {
-        "hero-badge": "通往古兰经之美的大门",
-        "hero-title-1": "开始学习古兰经",
-        "hero-title-2": "尽在掌握",
-        "hero-desc": "成为古兰经大家庭的第一步，方法实用，老少皆宜。",
-        "btn-start": "开始学习", "btn-materi": "查看功能",
-        "doa-text": '"主啊，求你增加我的知识 (塔哈章: 114)。"',
-        "fitur-header": "数字生态系统功能",
-        "f1-t": "数字 Iqro 方法 1-6", "f1-d": "通过交互式 TTS 语音从基础学习。",
-        "f2-t": "古兰经与注释", "f2-d": "按章/卷显示，全球翻译。",
-        "f3-t": "30卷诵读", "f3-d": "听取世界著名诵读家的声音。",
-        "tech-h": "技术与无障碍",
-        "t1": "支持所有设备 (PWA - 免安装)",
-        "t2": "专注阅读模式与深浅色模式",
-        "t3": "录音评估功能",
-        "t4": "支持离线使用 (特定功能)",
-        "t5": "放大阿拉伯语和拉丁文字",
-        "note-text": '"此应用为在线学习工具。面对面授课仍是最佳学习方式。"',
-        "hadist-text": '"你们中最好的人是学习古兰经并教导他人的人。"',
-        "btn-final": "现在获得功德"
-    },
-    ja: {
-        "hero-badge": "コーランの美しさへの門",
-        "hero-title-1": "コーラン学習を始める",
-        "hero-title-2": "あなたの手の中に",
-        "hero-desc": "実践的で分かりやすい方法で、全年齢層向けのコーラン学習の第一歩。",
-        "btn-start": "開始する", "btn-materi": "機能を見る",
-        "doa-text": '"アッラーよ、私に知識を増やしてください (ター・ハー: 114)。"',
-        "fitur-header": "デジタル機能",
-        "f1-t": "イクロ1-6メソッド", "f1-d": "インタラクティブなTTS音声で基礎から学ぶ。",
-        "f2-t": "ムスハフとタフスィール", "f2-d": "章・ジュズ別の表示、多言語翻訳。",
-        "f3-t": "ムロッタル30ジュズ", "f3-d": "世界的に有名な読誦家による朗誦。",
-        "tech-h": "技術とアクセシビリティ",
-        "t1": "全端末対応 (PWA - インストール不要)",
-        "t2": "集中読書モード & ダーク/ライトモード",
-        "t3": "自分の声を録音・評価機能",
-        "t4": "オフライン使用可能 (特定機能)",
-        "t5": "アラビア語とラテン語の文字拡大",
-        "note-text": '"このアプリはオンライン学習ツールです。対面教育が依然として最良のアプローチです。"',
-        "hadist-text": '"あなたがたの中で最も優れた者は、コーランを学び、それを教える者である。"',
-        "btn-final": "今すぐ徳を積む"
-    },
-    ko: {
-        "hero-badge": "코란의 아름다움으로 가는 관문",
-        "hero-title-1": "코란 학습 시작하기",
-        "hero-title-2": "당신의 손안에서",
-        "hero-desc": "실용적이고 이해하기 쉬운 방법으로 코란 학습의 첫 걸음을 내딛으세요.",
-        "btn-start": "시작하기", "btn-materi": "기능 보기",
-        "doa-text": '"알라여, 저에게 지식을 더해주소서 (타하: 114)."',
-        "fitur-header": "디지털 생태계 기능",
-        "f1-t": "디지털 이크로 1-6", "f1-d": "대화형 TTS 음성으로 기초부터 학습.",
-        "f2-t": "무스하프 및 타프시르", "f2-d": "장/절별 보기 및 다국어 번역.",
-        "f3-t": "30주즈 무로탈", "f3-d": "세계적인 낭송가들의 음성 지원.",
-        "tech-h": "기술 및 접근성",
-        "t1": "모든 기기 지원 (PWA - 무설치)",
-        "t2": "집중 독서 모드 & 다크/라이트 모드",
-        "t3": "자체 음성 녹음 기능",
-        "t4": "오프라인 사용 가능 (특정 기능)",
-        "t5": "아랍어 및 라틴어 텍스트 확대",
-        "note-text": '"이 앱은 온라인 도구입니다. 대면 학습이 가장 좋은 방법입니다."',
-        "hadist-text": '"너희 중 가장 훌륭한 사람은 코란을 배우고 가르치는 사람이다."',
-        "btn-final": "지금 공덕을 쌓으세요"
-    },
-    tr: {
-        "hero-badge": "Kur'an'ın Güzelliğine Açılan Kapı",
-        "hero-title-1": "Kur'an Öğrenmeye Başla",
-        "hero-title-2": "Avucunun İçinde",
-        "hero-desc": "Her yaşa uygun, pratik ve anlaşılır yöntemlerle Kur'an ehli olma yolunda ilk adım.",
-        "btn-start": "Başla", "btn-materi": "Özellikler",
-        "doa-text": '"Allah\'ım, ilmimi artır (Tâhâ: 114)."',
-        "fitur-header": "Dijital Ekosistem Özellikleri",
-        "f1-t": "İqro 1-6 Metodu", "f1-d": "İnteraktif TTS seslendirme ile temelden öğrenin.",
-        "f2-t": "Mushaf ve Tefsir", "f2-d": "Sure/Cüz görünümü ve dünya dillerinde çeviri.",
-        "f3-t": "30 Cüz Mukabele", "f3-d": "Dünyaca ünlü kailerden tilavetler.",
-        "tech-h": "Teknoloji ve Erişilebilirlik",
-        "t1": "Tüm Cihazlar (PWA - Kurulumsuz)",
-        "t2": "Odak Okuma & Gece/Gündüz Modu",
-        "t3": "Kendi Sesini Kaydetme Özelliği",
-        "t4": "Çevrimdışı Kullanım (Belirli Özellikler)",
-        "t5": "Arapça ve Latince metni büyütme",
-        "note-text": '"Bu uygulama çevrimiçi bir araçtır. En iyi yaklaşım yüz yüze eğitimdir."',
-        "hadist-text": '"Sizin en hayırlınız, Kur\'an\'ı öğrenen ve öğreteninizdir."',
-        "btn-final": "ŞİMDİ FAZİLETE ERİŞ"
-    },
-    ru: {
-        "hero-badge": "Врата к красоте Корана",
-        "hero-title-1": "Начни учить Коран",
-        "hero-title-2": "В твоих руках",
-        "hero-desc": "Первый шаг к тому, чтобы стать Ахлюль Куран с помощью практичных методов.",
-        "btn-start": "Начать", "btn-materi": "Особенности",
-        "doa-text": '"О Аллах, прибавь мне знаний (Та Ха: 114)."',
-        "fitur-header": "Цифровые возможности",
-        "f1-t": "Метод Икро 1-6", "f1-d": "Изучение хиджаии с озвучкой TTS.",
-        "f2-t": "Мусхаф и Тафсир", "f2-d": "Мировые переводы и аудио по аятам.",
-        "f3-t": "Муротталь 30 джузов", "f3-d": "Чтение от известных чтецов мира.",
-        "tech-h": "Технологии",
-        "t1": "Все устройства (PWA - Без установки)",
-        "t2": "Фокусный режим и Темная/Светлая тема",
-        "t3": "Запись собственного голоса",
-        "t4": "Офлайн доступ (определенные функции)",
-        "t5": "Увеличение арабского и латинского текста",
-        "note-text": '"Это онлайн-инструмент. Очное обучение остается лучшим."',
-        "hadist-text": '"Лучший из вас тот, кто учит Коран и обучает ему других."',
-        "btn-final": "ПОЛУЧИТЬ БЛАГОДАТЬ"
-    },
-    hi: {
-        "hero-badge": "कुरान की सुंदरता का प्रवेश द्वार",
-        "hero-title-1": "कुरान सीखना शुरू करें",
-        "hero-title-2": "आपके हाथ में",
-        "hero-desc": "व्यावहारिक और आसान तरीके से कुरान सीखने का पहला कदम।",
-        "btn-start": "शुरू करें", "btn-materi": "विशेषताएं",
-        "doa-text": '"हे अल्लाह, मेरे ज्ञान में वृद्धि कर (ता-हा: 114)।"',
-        "fitur-header": "डिजिटल विशेषताएं",
-        "f1-t": "इक्रो 1-6 पद्धति", "f1-d": "TTS वॉयस ओवर के साथ बुनियादी बातें सीखें।",
-        "f2-t": "मुशफ और तफ़सीर", "f2-d": "विश्वव्यापी अनुवाद के साथ सूरह/पारा दृश्य।",
-        "f3-t": "30 पारा मुशफ", "f3-d": "विश्व प्रसिद्ध कारी द्वारा पाठ।",
-        "tech-h": "तकनीक और पहुंच",
-        "t1": "सभी डिवाइस (PWA - बिना इंस्टॉल किए)",
-        "t2": "फोकस रीडिंग और डार्क/लाइट मोड",
-        "t3": "स्व-आवाज रिकॉर्डिंग सुविधा",
-        "t4": "ऑफलाइन उपयोग (कुछ विशेषताएं)",
-        "t5": "अरबी और लैटिन टेक्स्ट बड़ा करें",
-        "note-text": '"यह ऐप ऑनलाइन टूल है। आमने-सामne सीखना सबसे अच्छा है।"',
-        "hadist-text": '"तुममें से सबसे अच्छा वह है जो कुरान सीखता है और सिखाता है। अनुकूलन"',
-        "btn-final": "अभी पुण्य प्राप्त करें"
-    },
-    af: {
-        "hero-badge": "Poort na die skoonheid van die Koran",
-        "hero-title-1": "Begin Koran leer",
-        "hero-title-2": "In jou hand",
-        "hero-desc": "Die eerste stap om Ahlul Quran te word met 'n praktiese metode vir alle ouderdomme.",
-        "btn-start": "Begin nou", "btn-materi": "Kenmerke",
-        "doa-text": '"O Allah, vermeerder my kennis (QS. Thaha: 114)."',
-        "fitur-header": "Digitale Kenmerke",
-        "f1-t": "Iqro 1-6 Metode", "f1-d": "Leer Hijaiyah met interaktiewe TTS-stem.",
-        "f2-t": "Mushaf & Tafsir", "f2-d": "Kyk per Soera/Juz met wêreldwye vertalings.",
-        "f3-t": "Murottal 30 Juz", "f3-d": "Resitasies van wêreldbekende Qoris.",
-        "tech-h": "Tegnologie & Toeganklikheid",
-        "t1": "Alle toestelle (PWA - Geen installasie)",
-        "t2": "Fokusleesmodus & Donker/Ligmodus",
-        "t3": "Self-stem opname funksie",
-        "t4": "Vanlyn gebruik (sekere kenmerke)",
-        "t5": "Vergroot Arabiese en Latynse teks",
-        "note-text": '"Hierdie toepassing is \'n aanlyn hulpmiddel. Persoonlike leer bly die beste."',
-        "hadist-text": '"Die beste onder julle is die een wat die Koran leer en dit onderrig."',
-        "btn-final": "KRY NOU SEËN"
-    }
-};
-            // Tambahkan bahasa lain (FR, ES, PT, ZH, JA, KO, HI, TR) dengan pola yang sama di sini
+            id: {
+                "hero-badge": "Pintu Gerbang Keindahan Al-Qur'an",
+                "hero-title-1": "Mulai Belajar Al-Qur'an",
+                "hero-title-2": "Hanya Dalam Genggaman",
+                "hero-desc": "Langkah awal menjadi Ahlul Qur’an dengan metode praktis, mudah dipahami, dan cocok untuk semua usia.",
+                "btn-start": "Mulai Belajar",
+                "btn-materi": "Lihat Fitur",
+                "doa-text": '"Ya Allah, tambahkanlah kepadaku ilmu pengetahuan."',
+                "fitur-header": "Fitur Ekosistem Digital",
+                "f1-t": "Metode Iqro 1-6",
+                "f1-d": "Belajar Hijaiyah dari dasar buku K.H. As'ad Humam dengan Voice Over TTS.",
+                "f2-t": "Mushaf & Tafsir",
+                "f2-d": "Tampilan per Surah/Juz, bacaan latin, terjemahan dunia, dan audio per ayat.",
+                "f3-t": "Murottal 30 Juz",
+                "f3-d": "Dengarkan lantunan suci dari Qori ternama dunia untuk menemani tadabbur.",
+                "tech-h": "Teknologi & Aksesibilitas",
+                "t1": "Dukungan Semua Perangkat (PWA)",
+                "t2": "Mode Baca Fokus & Terang/Gelap",
+                "t3": "Fitur Rekam Bacaan Sendiri",
+                "t4": "Gunakan Secara Offline",
+                "t5": "Perbesar Teks Arab & Latin",
+                "note-text": '"Aplikasi ini adalah sarana pembelajaran. Pendekatan terbaik tetaplah Tallaqi (berhadapan langsung dengan guru)."',
+                "hadist-text": '"Sebaik-baik kalian adalah yang belajar Al-Qur’an dan mengajarkannya."',
+                "btn-final": "RAIH KEUTAMAAN SEKARANG"
+            },
+            en: {
+                "hero-badge": "Gateway to the Beauty of the Quran",
+                "hero-title-1": "Start Learning Quran",
+                "hero-title-2": "In Your Hand",
+                "hero-desc": "First step to becoming Ahlul Quran with practical methods for all ages.",
+                "btn-start": "Start Learning",
+                "btn-materi": "View Features",
+                "doa-text": '"O Allah, increase me in knowledge."',
+                "fitur-header": "Digital Features",
+                "f1-t": "Iqro 1-6 Method",
+                "f1-d": "Learn Hijaiyah with interactive TTS Voice Over.",
+                "f2-t": "Mushaf & Tafsir",
+                "f2-d": "Per Surah/Juz view with worldwide translations.",
+                "f3-t": "Murottal 30 Juz",
+                "f3-d": "Listen to holy recitations from world-renowned Qoris.",
+                "tech-h": "Tech & Accessibility",
+                "t1": "All Device Support (PWA)",
+                "t2": "Focus Mode & Light/Dark Mode",
+                "t3": "Voice Recording Feature",
+                "t4": "Available Offline",
+                "t5": "Enlarge Arabic & Latin Text",
+                "note-text": '"This app is a tool. Face-to-face learning (Tallaqi) remains best."',
+                "hadist-text": '"The best of you are those who learn the Quran and teach it."',
+                "btn-final": "GET VIRTUE NOW"
+            },
+            ru: {
+                "hero-badge": "Врата к красоте Корана",
+                "hero-title-1": "Начни учить Коран",
+                "hero-title-2": "В твоих руках",
+                "hero-desc": "Первый шаг к обучению Корану.",
+                "btn-start": "Начать", "btn-materi": "Функции",
+                "doa-text": '"О Аллах, прибавь мне знаний."',
+                "fitur-header": "Цифровые функции",
+                "f1-t": "Метод Икро 1-6", "f1-d": "Изучение хиджаии с озвучкой TTS.",
+                "f2-t": "Мусхаф и Тафсир", "f2-d": "Мировые переводы.",
+                "f3-t": "Муротталь 30 джузов", "f3-d": "Известные чтецы мира.",
+                "tech-h": "Технологии", "t1": "Все устройства (PWA)",
+                "t2": "Режим фокуса", "t3": "Запись голоса",
+                "t4": "Офлайн доступ", "t5": "Увеличение текста",
+                "note-text": '"Очное обучение остается лучшим."',
+                "hadist-text": '"Лучший из вас тот, кто учит Коран."',
+                "btn-final": "ПОЛУЧИТЬ БЛАГОДАТЬ"
+            },
+            de: {
+                "hero-badge": "Tor zur Schönheit des Korans",
+                "hero-title-1": "Koran lernen beginnen",
+                "hero-title-2": "In deiner Hand",
+                "hero-desc": "Der erste Schritt zum Koran-Lernen.",
+                "btn-start": "Starten", "btn-materi": "Funktionen",
+                "doa-text": '"O Allah, mehre mein Wissen."',
+                "fitur-header": "Funktionen",
+                "f1-t": "Iqro 1-6 Methode", "f1-d": "Hijaiyah lernen mit TTS.",
+                "f2-t": "Mushaf & Tafsir", "f2-d": "Weltweite Übersetzungen.",
+                "f3-t": "Murottal 30 Juz", "f3-d": "Bekannte Rezitatoren.",
+                "tech-h": "Technik", "t1": "Alle Geräte (PWA)",
+                "t2": "Fokusmodus", "t3": "Sprachaufnahme",
+                "t4": "Offline-Nutzung", "t5": "Text vergrößern",
+                "note-text": '"Persönliches Lernen ist am besten."',
+                "hadist-text": '"Der Beste lernt den Koran."',
+                "btn-final": "JETZT TUGEND ERHALTEN"
+            },
+            fr: {
+                "hero-badge": "Porte vers le Coran",
+                "hero-title-1": "Apprendre le Coran",
+                "hero-title-2": "Dans votre main",
+                "hero-desc": "Première étape pour apprendre.",
+                "btn-start": "Commencer", "btn-materi": "Caractéristiques",
+                "doa-text": '"Ô Allah, augmente mes connaissances."',
+                "fitur-header": "Caractéristiques",
+                "f1-t": "Méthode Iqro 1-6", "f1-d": "Apprendre avec TTS.",
+                "f2-t": "Mushaf & Tafsir", "f2-d": "Traductions mondiales.",
+                "f3-t": "Murottal 30 Juz", "f3-d": "Récitateurs célèbres.",
+                "tech-h": "Technologie", "t1": "Tous appareils (PWA)",
+                "t2": "Mode focus", "t3": "Enregistrement vocal",
+                "t4": "Usage hors ligne", "t5": "Agrandir le texte",
+                "note-text": '"Le face-à-face est préférable."',
+                "hadist-text": '"Le meilleur apprend le Coran."',
+                "btn-final": "OBTENIR LA VERTU"
+            },
+            es: {
+                "hero-badge": "Puerta al Corán",
+                "hero-title-1": "Aprender el Corán",
+                "hero-title-2": "En tu mano",
+                "hero-desc": "Primer paso para aprender.",
+                "btn-start": "Empezar", "btn-materi": "Funciones",
+                "doa-text": '"Oh Allah, aumenta mis conocimientos."',
+                "fitur-header": "Funciones",
+                "f1-t": "Método Iqro 1-6", "f1-d": "Aprender con TTS.",
+                "f2-t": "Mushaf y Tafsir", "f2-d": "Traducciones mundiales.",
+                "f3-t": "Murottal 30 Juz", "f3-d": "Recitadores famosos.",
+                "tech-h": "Tecnología", "t1": "Todos los dispositivos",
+                "t2": "Modo enfoque", "t3": "Grabación de voz",
+                "t4": "Uso offline", "t5": "Agrandar texto",
+                "note-text": '"El aprendizaje presencial es mejor."',
+                "hadist-text": '"El mejor aprende el Corán."',
+                "btn-final": "OBTÉN LA VIRTUD"
+            },
+            pt: {
+                "hero-badge": "Portal para o Alcorão",
+                "hero-title-1": "Aprender o Alcorão",
+                "hero-title-2": "Na sua mão",
+                "hero-desc": "Primeiro passo para aprender.",
+                "btn-start": "Começar", "btn-materi": "Recursos",
+                "doa-text": '"Ó Allah, aumenta o meu conhecimento."',
+                "fitur-header": "Recursos",
+                "f1-t": "Método Iqro 1-6", "f1-d": "Aprender com TTS.",
+                "f2-t": "Mushaf e Tafsir", "f2-d": "Traduções mundiais.",
+                "f3-t": "Murottal 30 Juz", "f3-d": "Recitadores famosos.",
+                "tech-h": "Tecnologia", "t1": "Todos os dispositivos",
+                "t2": "Modo foco", "t3": "Gravação de voz",
+                "t4": "Uso offline", "t5": "Aumentar texto",
+                "note-text": '"O face-a-face é melhor."',
+                "hadist-text": '"O melhor aprende o Alcorão."',
+                "btn-final": "OBTER VIRTUDE"
+            },
+            zh: {
+                "hero-badge": "通往古兰经之门",
+                "hero-title-1": "开始学习古兰经",
+                "hero-title-2": "尽在掌握",
+                "hero-desc": "学习的第一步。",
+                "btn-start": "开始学习", "btn-materi": "功能",
+                "doa-text": '"求主增加我的知识。"',
+                "fitur-header": "数字功能",
+                "f1-t": "Iqro 方法 1-6", "f1-d": "语音辅助学习。",
+                "f2-t": "古兰经与注释", "f2-d": "全球翻译。",
+                "f3-t": "30卷诵读", "f3-d": "著名诵读。",
+                "tech-h": "技术", "t1": "支持所有设备",
+                "t2": "专注模式", "t3": "录音功能",
+                "t4": "离线使用", "t5": "文字放大",
+                "note-text": '"面对面学习效果最佳。"',
+                "hadist-text": '"最好的人学习古兰经。"',
+                "btn-final": "现在获得功德"
+            },
+            ja: {
+                "hero-badge": "コーラン学習への門",
+                "hero-title-1": "学習を始める",
+                "hero-title-2": "あなたの手の中に",
+                "hero-desc": "最初の一歩。",
+                "btn-start": "開始する", "btn-materi": "機能",
+                "doa-text": '"知識を増やしてください。"',
+                "fitur-header": "デジタル機能",
+                "f1-t": "イクロ1-6", "f1-d": "音声ガイドで学ぶ。",
+                "f2-t": "ムスハフ", "f2-d": "多言語翻訳。",
+                "f3-t": "30ジュズ", "f3-d": "有名な朗誦。",
+                "tech-h": "技術", "t1": "全端末対応",
+                "t2": "集中モード", "t3": "録音機能",
+                "t4": "オフライン可能", "t5": "文字拡大",
+                "note-text": '"対面教育が最良です。"',
+                "hadist-text": '"最良の者はコーランを学ぶ。"',
+                "btn-final": "今すぐ徳を積む"
+            },
+            ko: {
+                "hero-badge": "코란 학습의 관문",
+                "hero-title-1": "학습 시작",
+                "hero-title-2": "손안에서",
+                "hero-desc": "첫 걸음.",
+                "btn-start": "시작하기", "btn-materi": "기능",
+                "doa-text": '"지식을 더해주소서."',
+                "fitur-header": "디지털 기능",
+                "f1-t": "이크로 1-6", "f1-d": "음성 지원 학습.",
+                "f2-t": "무스하프", "f2-d": "다국어 번역.",
+                "f3-t": "30주즈", "f3-d": "유명 낭송.",
+                "tech-h": "기술", "t1": "모든 기기 지원",
+                "t2": "집중 모드", "t3": "녹음 기능",
+                "t4": "오프라인 가능", "t5": "텍스트 확대",
+                "note-text": '"대면 학습이 최선입니다."',
+                "hadist-text": '"최고의 사람은 코란을 배운다."',
+                "btn-final": "지금 공덕을 쌓으세요"
+            },
+            ar: {
+                "hero-badge": "بوابة لجمال القرآن",
+                "hero-title-1": "ابدأ تعلم القرآن",
+                "hero-title-2": "في يدك",
+                "hero-desc": "الخطوة الأولى للتعلم.",
+                "btn-start": "ابدأ الآن", "btn-materi": "الميزات",
+                "doa-text": '"اللهم زدني علما"',
+                "fitur-header": "الميزات الرقمية",
+                "f1-t": "طريقة اقرأ ١-٦", "f1-d": "تعلم مع الصوت.",
+                "f2-t": "المصحف والتفسير", "f2-d": "ترجمات عالمية.",
+                "f3-t": "مرتل ٣٠ جزء", "f3-d": "تلاوات مشهورة.",
+                "tech-h": "التكنولوجيا", "t1": "كل الأجهزة",
+                "t2": "وضع التركيز", "t3": "تسجيل الصوت",
+                "t4": "بدون إنترنت", "t5": "تكبير النص",
+                "note-text": '"التلقي المباشر يبقى الأفضل."',
+                "hadist-text": '"خيركم من تعلم القرآن وعلمه"',
+                "btn-final": "احصل على الفضيلة الآن"
+            },
+            tr: {
+                "hero-badge": "Kur'an'a Açılan Kapı",
+                "hero-title-1": "Öğrenmeye Başla",
+                "hero-title-2": "Avucunda",
+                "hero-desc": "İlk adım.",
+                "btn-start": "Başla", "btn-materi": "Özellikler",
+                "doa-text": '"Allah\'ım, ilmimi artır."',
+                "fitur-header": "Dijital Özellikler",
+                "f1-t": "İqro 1-6 Metodu", "f1-d": "Sesli öğrenin.",
+                "f2-t": "Mushaf ve Tefsir", "f2-d": "Dünya dillerinde çeviri.",
+                "f3-t": "30 Cüz", "f3-d": "Ünlü kailer.",
+                "tech-h": "Teknoloji", "t1": "Tüm Cihazlar",
+                "t2": "Odak Modu", "t3": "Ses Kaydı",
+                "t4": "Çevrimdışı", "t5": "Metni Büyüt",
+                "note-text": '"Yüz yüze eğitim en iyisidir."',
+                "hadist-text": '"En hayırlınız Kur\'an\'ı öğrenendir."',
+                "btn-final": "ŞİMDİ FAZİLETE ERİŞ"
+            },
+            hi: {
+                "hero-badge": "कुरान सीखने का द्वार",
+                "hero-title-1": "सीखना शुरू करें",
+                "hero-title-2": "आपके हाथ में",
+                "hero-desc": "पहला कदम।",
+                "btn-start": "शुरू करें", "btn-materi": "विशेषताएं",
+                "doa-text": '"ज्ञान में वृद्धि कर।"',
+                "fitur-header": "डिजिटल विशेषताएं",
+                "f1-t": "इक्रो 1-6 पद्धति", "f1-d": "ऑडियो सहायता से सीखें।",
+                "f2-t": "मुशफ और तफ़सीर", "f2-d": "विश्वव्यापी अनुवाद।",
+                "f3-t": "30 पारा मुशफ", "f3-d": "प्रसिद्ध कारी।",
+                "tech-h": "तकनीक", "t1": "सभी डिवाइस",
+                "t2": "फोकस मोड", "t3": "वॉयस रिकॉर्डिंग",
+                "t4": "ऑफलाइन", "t5": "टेक्स्ट बड़ा करें",
+                "note-text": '"आमने-सामने सीखना सबसे अच्छा है।"',
+                "hadist-text": '"तुममें से सबसे अच्छा कुरान सीखता है। "',
+                "btn-final": "अभी पुण्य प्राप्त करें"
+            },
+            af: {
+                "hero-badge": "Poort na die Koran",
+                "hero-title-1": "Begin Koran leer",
+                "hero-title-2": "In jou hand",
+                "hero-desc": "Eerste stap.",
+                "btn-start": "Begin nou", "btn-materi": "Kenmerke",
+                "doa-text": '"O Allah, vermeerder my kennis."',
+                "fitur-header": "Digitale Kenmerke",
+                "f1-t": "Iqro 1-6", "f1-d": "Leer met klank.",
+                "f2-t": "Mushaf & Tafsir", "f2-d": "Vertalings.",
+                "f3-t": "Murottal 30 Juz", "f3-d": "Beroemde Qoris.",
+                "tech-h": "Tegnologie", "t1": "Alle toestelle",
+                "t2": "Fokusmodus", "t3": "Stemopname",
+                "t4": "Vanlyn", "t5": "Vergroot teks",
+                "note-text": '"Persoonlike leer is beste."',
+                "hadist-text": '"Die beste leer die Koran."',
+                "btn-final": "KRY NOU SEËN"
+            }
         };
 
         function toggleTheme() {
@@ -493,8 +495,10 @@
             document.getElementById('langMenu').classList.remove('show');
             const content = translations[lang] || translations['en'];
             for (let key in content) {
-                const el = document.querySelector(`[data-lang="${key}"]`);
-                if (el) el.innerText = content[key];
+                const elements = document.querySelectorAll(`[data-lang="${key}"]`);
+                elements.forEach(el => {
+                    el.innerText = content[key];
+                });
             }
         }
 
