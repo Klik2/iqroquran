@@ -1,55 +1,49 @@
 
-// utils/soundMapping.ts
+// This utility can be used to map common mispronunciations or local dialect spellings
+// to their correct Arabic/Latin equivalents, primarily for improving voice command
+// recognition or providing more forgiving input processing.
+
+interface SoundMapping {
+  [key: string]: string; // Maps a detected keyword/phrase to a normalized one
+}
+
+export const soundMappings: SoundMapping = {
+  // Common mispronunciations or local variants
+  "patihah": "al-fatihah",
+  "fatihah": "al-fatihah",
+  "baqarah": "al-baqarah",
+  "iklas": "al-ikhlas",
+  "an-nas": "an nas",
+  "alif lam mim": "alif laam miim",
+
+  // Commands mapping (if not handled by voiceTriggers directly)
+  "lanjut": "next",
+  "terus": "next",
+  "berikutnya": "next",
+  "ulang": "repeat",
+  "ulangi": "repeat",
+  "balik": "previous",
+  "sebelumnya": "previous",
+  "stop": "stop",
+  "berhenti": "stop",
+  "mulai": "start",
+  "rekor": "start",
+  "bantuan": "help",
+  "tolong": "help",
+};
 
 /**
- * Peta untuk menormalisasi frasa yang diucapkan ke bentuk kanonik.
- * Berguna untuk menangani salah ucap, dialek, atau variasi pengucapan.
- * Kunci harus dalam lowercase.
+ * Normalizes a given input string based on predefined sound mappings.
+ * It converts the input to lowercase and replaces known variants.
+ * @param input The string to normalize.
+ * @returns The normalized string.
  */
-export const soundMapping: Map<string, string> = new Map([
-  // Contoh untuk Al-Fatihah
-  ['patihah', 'Al-Fatihah'],
-  ['fatihah', 'Al-Fatihah'],
-  ['fatehah', 'Al-Fatihah'],
-  ['patehah', 'Al-Fatihah'],
-  
-  // Contoh untuk nomor Juz
-  ['juz satu', 'juz 1'],
-  ['juz dua', 'juz 2'],
-  ['juz empat', 'juz 4'],
-  // ... tambahkan untuk semua nomor yang mungkin disalahucapkan
-
-  // Contoh untuk huruf Hijaiyah atau Iqro
-  ['alif ba', 'alif ba ta'],
-  ['alif bata', 'alif ba ta'],
-  ['alip', 'alif'],
-  ['jim', 'ja'], // jika "ja" adalah bentuk yang diharapkan
-  ['ha', 'ḥa'], // jika ada perbedaan antara ح dan ه
-  
-  // Contoh untuk perintah navigasi
-  ['lanjutkan', 'lanjut'],
-  ['maju', 'lanjut'],
-  ['mundur', 'kembali'],
-  ['ulangi lagi', 'ulang'],
-  ['tolong ulang', 'ulang'],
-  ['putarkan', 'putar'],
-  ['hentikan', 'berhenti'],
-  ['berhenti putar', 'stop'],
-
-  // Variasi bahasa Inggris
-  ['next page', 'next'],
-  ['previous page', 'prev'],
-  ['go back', 'prev'],
-  ['go to next', 'next'],
-  ['go to previous', 'prev'],
-  ['play sound', 'play'],
-  ['stop sound', 'stop'],
-  ['restart', 'repeat'],
-
-  // Variasi bahasa Arab (contoh sederhana, bisa lebih kompleks)
-  ['التالي', 'next'], // al-tali
-  ['السابق', 'prev'], // al-sabik
-  ['تكرار', 'repeat'], // takrar
-  ['تشغيل', 'play'], // tashghil
-  ['ايقاف', 'stop'], // iqaf
-]);
+export const normalizeSoundInput = (input: string): string => {
+  let normalized = input.toLowerCase();
+  for (const key in soundMappings) {
+    if (normalized.includes(key)) {
+      normalized = normalized.replace(new RegExp(key, 'g'), soundMappings[key]);
+    }
+  }
+  return normalized.trim();
+};
