@@ -1,10 +1,9 @@
 
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, Loader2, List, Layers, BookUp } from 'lucide-react';
 import { Surah } from '../types';
-import { fetchAllSurahs } from '../services/quranService';
+import { fetchAllSurahs } from '../services/quranService'; // FIX: Corrected import
 import { useTranslation } from '../contexts/LanguageContext';
 
 const Mushaf: React.FC = () => {
@@ -63,12 +62,12 @@ const Mushaf: React.FC = () => {
               <input 
                 type="text" 
                 placeholder={t('searchSurah')}
-                className="pl-12 pr-6 py-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-full focus:ring-4 focus:ring-emerald-500/10 outline-none w-full shadow-sm font-bold transition-all text-slate-900 dark:text-white"
+                className="pl-12 pr-6 py-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-full focus:ring-4 focus:ring-emerald-500/10 outline-none w-full shadow-sm font-bold transition-all text-slate-900 dark:text-white min-h-[44px]"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
-            <button onClick={handleJump} className="p-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-full shadow-sm text-emerald-dark dark:text-emerald-light" aria-label="Lompat ke Surah">
+            <button onClick={handleJump} className="p-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-full shadow-sm text-emerald-dark dark:text-emerald-light min-h-[44px] min-w-[44px]" aria-label="Lompat ke Surah">
                 <BookUp size={20} />
             </button>
         </div>
@@ -76,13 +75,15 @@ const Mushaf: React.FC = () => {
         <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-full border border-slate-200 dark:border-slate-700">
            <button 
              onClick={() => setViewMode('surah')}
-             className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-full text-sm font-black transition-all ${viewMode === 'surah' ? 'bg-emerald-dark text-white shadow-md' : 'text-slate-500 hover:text-slate-700'}`}
+             className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-full text-sm font-black transition-all min-h-[44px] ${viewMode === 'surah' ? 'bg-emerald-dark text-white shadow-md' : 'text-slate-500 hover:text-slate-700'}`}
+             aria-label="Tampilkan daftar Surah"
            >
               <List size={18}/> Surah
            </button>
            <button 
              onClick={() => setViewMode('juz')}
-             className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-full text-sm font-black transition-all ${viewMode === 'juz' ? 'bg-emerald-dark text-white shadow-md' : 'text-slate-500 hover:text-slate-700'}`}
+             className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-full text-sm font-black transition-all min-h-[44px] ${viewMode === 'juz' ? 'bg-emerald-dark text-white shadow-md' : 'text-slate-500 hover:text-slate-700'}`}
+             aria-label="Tampilkan daftar Juz"
            >
               <Layers size={18}/> Juz
            </button>
@@ -96,9 +97,10 @@ const Mushaf: React.FC = () => {
               <button 
                 key={surah.number}
                 onClick={() => navigate(`/surah/${surah.number}`)}
-                className="flex items-center gap-4 p-4 bg-white dark:bg-dark-blue-card rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-emerald-500 transition-all text-left shadow-sm group"
+                className="flex items-center gap-4 p-4 bg-white dark:bg-dark-blue-card rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-emerald-500 transition-all text-left shadow-sm group min-h-[88px]"
+                aria-label={`Baca Surah ${surah.englishName} (${surah.name})`}
               >
-                <div className="w-10 h-10 bg-emerald-light/30 text-emerald-dark dark:bg-emerald-dark/50 dark:text-white rounded-xl flex items-center justify-center font-bold shrink-0">
+                <div className="w-10 h-10 bg-emerald-light/30 text-emerald-dark dark:bg-emerald-dark/50 dark:text-white rounded-xl flex items-center justify-center font-bold shrink-0 min-w-[44px] min-h-[44px]">
                   {surah.number}
                 </div>
                 <div className="flex-1 overflow-hidden">
@@ -117,7 +119,8 @@ const Mushaf: React.FC = () => {
                <button 
                  key={juz}
                  onClick={() => navigate(`/juz/${juz}`)}
-                 className="p-6 bg-white dark:bg-dark-blue-card rounded-2xl border border-slate-100 dark:border-slate-800 text-center hover:border-emerald-500 transition-all shadow-sm active:scale-95"
+                 className="p-6 bg-white dark:bg-dark-blue-card rounded-2xl border border-slate-100 dark:border-slate-800 text-center hover:border-emerald-500 transition-all shadow-sm active:scale-95 min-h-[88px]"
+                 aria-label={`Baca Juz ${juz}`}
                >
                   <p className="text-[10px] text-slate-400 uppercase font-bold mb-1">Juz</p>
                   <span className="text-2xl font-bold text-emerald-dark dark:text-white">{juz}</span>
