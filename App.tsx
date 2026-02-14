@@ -116,15 +116,6 @@ const AppRoutes: React.FC = () => {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/doa-keluarga" element={<PopupEntry />} />
         <Route path="/admin/stats" element={<AdminStats />} /> {/* NEW HIDDEN ROUTE */}
-        <Route path="/promo" element={
-         <div style={{ width: '100%', height: '100vh', overflow: 'hidden' }}>
-          <iframe 
-            src="/page.html" 
-            title="Promo Iqro Quran Digital" 
-            style={{ width: '100%', height: '100%', border: 'none' }} 
-          />
-        </div>
-      } />
       </Route>
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
