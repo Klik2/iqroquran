@@ -1,7 +1,9 @@
+
 import React, { useState, useCallback, useRef } from 'react';
 import { tajwidData } from '../../data/tajwidData';
 import { Volume2, Loader2, ChevronDown } from 'lucide-react';
 import { speakText, AudioPlaybackControls } from '../../services/geminiService'; // FIX: Changed to speakText and imported AudioPlaybackControls
+import { useTranslation } from '../../contexts/LanguageContext';
 
 // Define color mapping for Tajwid rules
 const tajwidColors: { [key: string]: string } = {
@@ -15,6 +17,7 @@ const tajwidColors: { [key: string]: string } = {
 };
 
 const TajwidView: React.FC = () => {
+    const { currentLanguage } = useTranslation();
     const [loadingAudio, setLoadingAudio] = useState<string | null>(null);
     const [playingAudio, setPlayingAudio] = useState<string | null>(null);
     // FIX: currentAudioPlaybackRef now uses AudioPlaybackControls
@@ -30,15 +33,13 @@ const TajwidView: React.FC = () => {
         )}</>;
     };
 
-    const playAudio = useCallback(async (text: string, id: string) => {
+    // FIX: Modified playAudio to handle isArabicContent and primaryWebSpeechLang correctly
+    const playAudio = useCallback(async (text: string, id: string, isArabicContent: boolean = false) => {
         if (loadingAudio) return; // Prevent multiple audio loads
         
         // Stop currently playing audio if any
         if (currentAudioPlaybackRef.current) {
-            currentAudioPlaybackRef.current.sourceNode?.stop();
-            if (window.speechSynthesis.speaking) {
-                window.speechSynthesis.cancel();
-            }
+            currentAudioPlaybackRef.current.stop(); // Use the stop method from controls
             if (playingAudio === id) { // If clicking the same item, just stop and exit
                 setPlayingAudio(null);
                 currentAudioPlaybackRef.current = null;
@@ -48,17 +49,26 @@ const TajwidView: React.FC = () => {
         
         setLoadingAudio(id);
         try {
+            // Determine primary language for Web Speech API
+            const primaryWebSpeechLang = currentLanguage === 'id' ? 'id-ID' : 'en-US';
+            const langHint = isArabicContent ? 'Arabic' : (currentLanguage === 'id' ? 'Indonesian' : 'English');
+
             // speakText now returns an AudioPlayback object
-            const playback = await speakText(text, 'Kore', 'Indonesian');
+            const playback = await speakText(
+                text, 
+                'Kore', 
+                langHint, 
+                isArabicContent, 
+                undefined, 
+                true // Force Web Speech API for all Tajwid content
+            );
             
             // Call play() on the AudioPlayback object to start audio and get controls
-            const { sourceNode, controls } = playback.play();
-            currentAudioPlaybackRef.current = {
-                sourceNode,
-                controls,
-            };
+            const controls = playback.play(); // Get controls directly
+            currentAudioPlaybackRef.current = controls; // Store the controls object directly
             setPlayingAudio(id);
-            controls.onended = () => {
+            // Set onended callback on the returned controls
+            controls.controls.onended = () => { // Access onended via controls.controls
                 setPlayingAudio(null);
                 currentAudioPlaybackRef.current = null;
             };
@@ -68,7 +78,7 @@ const TajwidView: React.FC = () => {
         } finally {
             setLoadingAudio(null);
         }
-    }, [loadingAudio, playingAudio]);
+    }, [loadingAudio, playingAudio, currentLanguage]);
 
     return (
         <div className="space-y-4">
@@ -81,7 +91,8 @@ const TajwidView: React.FC = () => {
                         <summary className="font-semibold text-lg cursor-pointer list-none flex justify-between items-center text-emerald-dark dark:text-white p-4">
                             <span 
                                 className={`flex-grow text-left ${ruleColorClass}`} 
-                                onClick={(e) => { e.stopPropagation(); playAudio(`${rule.rule}. ${rule.explanation}`, `${ruleId}-summary`); }}
+                                // FIX: Pass false for isArabicContent as this is an Indonesian explanation
+                                onClick={(e) => { e.stopPropagation(); playAudio(`${rule.rule}. ${rule.explanation}`, `${ruleId}-summary`, false); }}
                                 style={{ minHeight: '44px', display: 'flex', alignItems: 'center' }} // Accessibility touch target
                                 aria-label={`Dengarkan penjelasan hukum ${rule.rule}`}
                             >
@@ -92,7 +103,8 @@ const TajwidView: React.FC = () => {
                         <div className="px-4 pb-4 space-y-3 text-gray-700 dark:text-gray-300">
                             <p className="text-sm">
                                 <span 
-                                    onClick={() => playAudio(rule.explanation, `${ruleId}-explanation`)}
+                                    // FIX: Pass false for isArabicContent as this is an Indonesian explanation
+                                    onClick={() => playAudio(rule.explanation, `${ruleId}-explanation`, false)}
                                     className="cursor-pointer hover:underline"
                                     aria-label={`Dengarkan penjelasan ${rule.rule}`}
                                 >
@@ -102,7 +114,8 @@ const TajwidView: React.FC = () => {
                             {rule.letters && (
                                 <p>
                                     <strong
-                                        onClick={() => playAudio(`Huruf ${rule.letters}`, `${ruleId}-letters`)}
+                                        // FIX: Pass false for isArabicContent as this is an Indonesian explanation of letters
+                                        onClick={() => playAudio(`Huruf: ${rule.letters}`, `${ruleId}-letters`, false)}
                                         className="cursor-pointer hover:underline"
                                         aria-label={`Dengarkan huruf-huruf ${rule.rule}`}
                                     >
@@ -119,7 +132,8 @@ const TajwidView: React.FC = () => {
                                 {rule.examples?.map((ex, exIndex) => (
                                     <div key={exIndex} className="flex items-center justify-between p-2 rounded-md bg-gray-100 dark:bg-dark-blue-card">
                                         <div 
-                                            onClick={() => playAudio(ex.arabic, `ex-${ruleId}-${exIndex}`)}
+                                            // FIX: Pass true for isArabicContent as ex.arabic is Arabic text
+                                            onClick={() => playAudio(ex.arabic, `ex-${ruleId}-${exIndex}`, true)}
                                             className="cursor-pointer flex-grow min-h-[44px] flex flex-col justify-center" // Accessibility touch target
                                             aria-label={`Dengarkan contoh ${ex.latin}`}
                                         >
@@ -127,7 +141,8 @@ const TajwidView: React.FC = () => {
                                             <p className="text-sm italic text-emerald-dark dark:text-emerald-light">{ex.latin}</p>
                                         </div>
                                         <button 
-                                            onClick={() => playAudio(ex.arabic, `ex-btn-${ruleId}-${exIndex}`)}
+                                            // FIX: Pass true for isArabicContent as ex.arabic is Arabic text
+                                            onClick={() => playAudio(ex.arabic, `ex-btn-${ruleId}-${exIndex}`, true)}
                                             className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition min-h-[44px] min-w-[44px]"
                                             aria-label={`Dengarkan contoh ${ex.latin}`}
                                         >
@@ -148,7 +163,8 @@ const TajwidView: React.FC = () => {
                                     <div key={subIndex} className="ml-4 border-l-2 border-emerald-dark/50 pl-4 py-2 space-y-2">
                                         <h4 
                                             className={`font-semibold ${subRuleColorClass}`}
-                                            onClick={() => playAudio(`${sub.name}. ${sub.explanation}`, `${subRuleId}-summary`)}
+                                            // FIX: Pass false for isArabicContent as this is an Indonesian explanation
+                                            onClick={() => playAudio(`${sub.name}. ${sub.explanation}`, `${subRuleId}-summary`, false)}
                                             style={{ minHeight: '44px', display: 'flex', alignItems: 'center' }} // Accessibility touch target
                                             aria-label={`Dengarkan penjelasan sub-hukum ${sub.name}`}
                                         >
@@ -156,7 +172,8 @@ const TajwidView: React.FC = () => {
                                         </h4>
                                         <p className="text-sm">
                                             <span 
-                                                onClick={() => playAudio(sub.explanation, `${subRuleId}-explanation`)}
+                                                // FIX: Pass false for isArabicContent as this is an Indonesian explanation
+                                                onClick={() => playAudio(sub.explanation, `${subRuleId}-explanation`, false)}
                                                 className="cursor-pointer hover:underline"
                                                 aria-label={`Dengarkan penjelasan ${sub.name}`}
                                             >
@@ -166,7 +183,8 @@ const TajwidView: React.FC = () => {
                                         {sub.examples.map((ex, exSubIndex) => (
                                             <div key={exSubIndex} className="flex items-center justify-between p-2 rounded-md bg-gray-100 dark:bg-dark-blue-card">
                                                 <div 
-                                                    onClick={() => playAudio(ex.arabic, `ex-${subRuleId}-${exSubIndex}`)}
+                                                    // FIX: Pass true for isArabicContent as ex.arabic is Arabic text
+                                                    onClick={() => playAudio(ex.arabic, `ex-${subRuleId}-${exSubIndex}`, true)}
                                                     className="cursor-pointer flex-grow min-h-[44px] flex flex-col justify-center" // Accessibility touch target
                                                     aria-label={`Dengarkan contoh ${ex.latin}`}
                                                 >
@@ -174,7 +192,8 @@ const TajwidView: React.FC = () => {
                                                     <p className="text-sm italic text-emerald-dark dark:text-emerald-light">{ex.latin}</p>
                                                 </div>
                                                 <button 
-                                                    onClick={() => playAudio(ex.arabic, `ex-btn-${subRuleId}-${exSubIndex}`)}
+                                                    // FIX: Pass true for isArabicContent as ex.arabic is Arabic text
+                                                    onClick={() => playAudio(ex.arabic, `ex-btn-${subRuleId}-${exSubIndex}`, true)}
                                                     className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition min-h-[44px] min-w-[44px]"
                                                     aria-label={`Dengarkan contoh ${ex.latin}`}
                                                 >
