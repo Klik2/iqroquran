@@ -41,23 +41,35 @@ interface LanguageContextType {
   translations: Translations;
   changeLanguage: (langCode: LanguageCode) => void;
   isLoading: boolean;
-  t: (key: TranslationKeys) => string;
+  // FIX: Updated `t` function signature to accept an optional options object for interpolation
+  t: (key: TranslationKeys, options?: Record<string, string | number>) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [currentLanguage, setCurrentLanguage] = useState<LanguageCode>('id');
+  const [currentLanguage, setCurrentLanguage] = useState<LanguageCode>(() => {
+    return (localStorage.getItem('appLanguage') as LanguageCode) || 'id';
+  });
   const [translations, setTranslations] = useState<Translations>(idStrings);
   const [isLoading, setIsLoading] = useState(false);
-  const [translationCache, setTranslationCache] = useState<Record<LanguageCode, Translations>>({ 'id': idStrings });
+  const [translationCache, setTranslationCache] = useState<Record<LanguageCode, Translations>>(() => {
+    const savedCache = localStorage.getItem('translationCache');
+    return savedCache ? JSON.parse(savedCache) : { 'id': idStrings };
+  });
+
+  useEffect(() => {
+    if (translationCache[currentLanguage]) {
+      setTranslations(translationCache[currentLanguage]);
+    }
+  }, [currentLanguage, translationCache]);
 
   const changeLanguage = useCallback(async (langCode: LanguageCode) => {
     if (langCode === currentLanguage) return;
 
     if (translationCache[langCode]) {
-        setTranslations(translationCache[langCode]);
         setCurrentLanguage(langCode);
+        localStorage.setItem('appLanguage', langCode);
         return;
     }
 
@@ -71,9 +83,13 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
             throw new Error("Translation did not return all keys.");
         }
 
-        setTranslationCache(prev => ({ ...prev, [langCode]: newTranslations as Translations }));
+        const updatedCache = { ...translationCache, [langCode]: newTranslations as Translations };
+        setTranslationCache(updatedCache);
+        localStorage.setItem('translationCache', JSON.stringify(updatedCache));
+        
         setTranslations(newTranslations as Translations);
         setCurrentLanguage(langCode);
+        localStorage.setItem('appLanguage', langCode);
     } catch (error) {
         console.error("Failed to translate:", error);
         alert(`Failed to switch language to ${langCode}. Please try again.`);
@@ -82,8 +98,16 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     }
   }, [currentLanguage, translationCache]);
   
-  const t = useCallback((key: TranslationKeys): string => {
-      return translations[key] || idStrings[key];
+  // FIX: Updated `t` function implementation to handle the options object for interpolation
+  const t = useCallback((key: TranslationKeys, options?: Record<string, string | number>): string => {
+      let text = translations[key] || idStrings[key];
+      if (options) {
+          for (const optKey in options) {
+              // Replace placeholders like {{optKey}} with the actual value
+              text = text.replace(new RegExp(`{{${optKey}}}`, 'g'), String(options[optKey]));
+          }
+      }
+      return text;
   }, [translations]);
 
   return (
