@@ -1,26 +1,31 @@
-
 {
   "name": "iqro-quran-digital-v.2",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "tsx server.ts",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
     "@google/genai": "^0.14.0",
-    "recharts": "3.0.0",
+    "framer-motion": "^12.34.3",
+    "hls.js": "^1.6.15",
+    "html2canvas": "^1.4.1",
+    "lucide-react": "^0.563.0",
+    "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.0",
-    "react": "^18.2.0",
-    "lucide-react": "^0.563.0",
-    "html2canvas": "^1.4.1"
+    "recharts": "3.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "dotenv": "^17.3.1",
+    "path": "^0.12.7",
+    "tsx": "^4.21.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"
   }
