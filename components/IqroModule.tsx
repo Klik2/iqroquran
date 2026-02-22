@@ -8,15 +8,15 @@ import { useIqroBookmarks } from '../hooks/useIqroBookmarks';
 import StudyView from './iqro/StudyView';
 import PracticeView from './iqro/PracticeView';
 import TajwidView from './iqro/TajwidView';
-import QuizView from './iqro/QuizView';
 import BookmarksView from './iqro/BookmarksView';
 import { IqroLevelData } from '../types'; // Import IqroLevelData type
 
-type ViewMode = 'study' | 'practice' | 'tajwid' | 'quiz' | 'bookmarks';
+type ViewMode = 'study' | 'practice' | 'tajwid' | 'bookmarks';
 
 interface IqroModuleProps {
     t: any;
-    levelData: IqroLevelData; // Use the imported IqroLevelData type
+    // FIX: Changed levelData type to IqroLevelData
+    levelData: IqroLevelData; 
 }
 
 const IqroModule: React.FC<IqroModuleProps> = ({ t, levelData }) => {
@@ -40,19 +40,17 @@ const IqroModule: React.FC<IqroModuleProps> = ({ t, levelData }) => {
             <button onClick={() => setViewMode('tajwid')} className={`px-4 py-2 text-sm font-semibold rounded-lg flex items-center gap-2 ${viewMode === 'tajwid' ? 'bg-emerald-dark text-white' : 'bg-gray-100 dark:bg-dark-blue'} min-h-[44px]`}>
               <Award size={16}/> {t('tajwid')}
             </button>
-            <button onClick={() => setViewMode('quiz')} className={`px-4 py-2 text-sm font-semibold rounded-lg flex items-center gap-2 ${viewMode === 'quiz' ? 'bg-emerald-dark text-white' : 'bg-gray-100 dark:bg-dark-blue'} min-h-[44px]`}>
-              <HelpCircle size={16}/> {t('quiz')}
-            </button>
+
             <button onClick={() => setViewMode('bookmarks')} className={`px-4 py-2 text-sm font-semibold rounded-lg flex items-center gap-2 relative ${viewMode === 'bookmarks' ? 'bg-emerald-dark text-white' : 'bg-gray-100 dark:bg-dark-blue'} min-h-[44px]`}>
               <Bookmark size={16}/> {t('bookmarksMode')}
               {bookmarks.length > 0 && <span className="absolute -top-1 -right-1 w-4 h-4 text-xs bg-red-500 text-white rounded-full flex items-center justify-center">{bookmarks.length}</span>}
             </button>
         </div>
 
+        {/* FIX: Ensure levelData is passed with correct type. Already done by fixing IqroModuleProps */}
         {viewMode === 'study' && <StudyView levelData={levelData} />}
         {viewMode === 'practice' && <PracticeView levelData={levelData} />}
         {viewMode === 'tajwid' && <TajwidView />}
-        {viewMode === 'quiz' && <QuizView levelData={levelData} />}
         {viewMode === 'bookmarks' && <BookmarksView onNavigate={(level) => { /* Navigation is now handled by parent */ }} />}
       </div>
   );
