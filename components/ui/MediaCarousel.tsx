@@ -1,14 +1,10 @@
 
+
 import React from 'react';
 import { Film, Image, FileText } from 'lucide-react';
-import { useTranslation } from '../../contexts/LanguageContext';
+import { useTranslation, TranslationKeys } from '../../contexts/LanguageContext'; // NEW: Import TranslationKeys
 
 const mediaItems = [
-    {
-        type: 'video',
-        title: 'Panduan Video Penggunaan Aplikasi',
-        content: 'https://www.youtube.com/embed/7-Qf3g-0xEI'
-    },
     {
         type: 'image',
         title: 'Keutamaan Membaca Al-Quran',
@@ -25,7 +21,8 @@ const MediaCarousel: React.FC = () => {
     const { t } = useTranslation();
     return (
         <div className="space-y-4">
-            <h2 className="text-xl font-bold text-emerald-dark dark:text-white">{t('mediaInfo')}</h2>
+            {/* FIX: Use TranslationKeys type for t() calls */}
+            <h2 className="text-xl font-bold text-emerald-dark dark:text-white">{t('mediaInfo' as TranslationKeys)}</h2>
             <div className="flex flex-col space-y-4">
                 {mediaItems.map((item, index) => (
                     <div key={index} className="w-full bg-white dark:bg-dark-blue-card rounded-xl shadow-md overflow-hidden">
